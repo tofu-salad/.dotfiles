@@ -1,0 +1,27 @@
+# Global settings
+separator_block_width=20
+markup=pango
+
+[memory_usage]
+command=free -h | awk '/^Mem/ {print $3"/"$2}'
+interval=10
+color=#B4BEFE
+
+# Audio block
+[audio]
+full_text=Audio
+command=pamixer --get-volume-human
+interval=once
+color=#F9E2AF
+label=<span font="FiraCode Nerd Font"> </span>
+signal=10
+
+
+
+[time]
+command=./dev/i3blocks_time
+interval=1
+color=#FFB6C1
+font="FiraCode Nerd Font 10"
+
+

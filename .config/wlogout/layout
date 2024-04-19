@@ -1,0 +1,15 @@
+{
+    "label" : "logout",
+    "action" : "hyprctl dispatch exit",
+    "text" : "Logout",
+}
+{
+    "label" : "shutdown",
+    "action" : "shutdown 'now' -P",
+    "text" : "Shutdown",
+}
+{
+    "label" : "reboot",
+    "action" : "shutdown 'now' -r",
+    "text" : "Reboot",
+}

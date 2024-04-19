@@ -1,0 +1,42 @@
+window {
+  margin: 1px;
+  border: 1px solid rgba(99,99,99,1);
+  border-radius: 8px;
+  font-family: "Liga SFMono Nerd Font";
+  background-color: #1A1A1A;
+}
+
+#input {
+  margin: 10px 1px;
+  border-radius: 16px;
+  border: none;
+  background-color: #1A1A1A;
+  color: white;
+}
+
+#inner-box {
+  background-color: #1A1A1A;
+}
+
+#outer-box {
+  margin: 1px;
+  padding: 20px;
+  background-color: #1A1A1A;
+  border-radius: 8px;
+}
+
+#text {
+  margin: 5px;
+  color: white;
+}
+
+#img {
+    background-color: transparent;
+}
+#entry:selected {
+  background-color: #111111;
+}
+
+#text:selected {
+  text-decoration-color: white;
+}

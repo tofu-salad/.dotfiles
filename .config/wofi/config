@@ -1,0 +1,8 @@
+mode=run
+single_click=true
+insensitive=true
+prompt= Search...
+height=180
+width=500
+term=kitty
+hide_scroll=true
