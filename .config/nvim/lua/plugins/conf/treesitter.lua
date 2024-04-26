@@ -1,24 +1,3 @@
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-parser_config.templ = {
-	install_info = {
-		url = "https://github.com/vrischmann/tree-sitter-templ.git",
-		files = { "src/parser.c", "src/scanner.c" },
-		branch = "master",
-	},
-}
-
-parser_config.gotmpl = {
-	install_info = {
-		url = "https://github.com/ngalaiko/tree-sitter-go-template",
-		files = { "src/parser.c" },
-	},
-	filetype = "gotmpl",
-	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "html" },
-}
-
-vim.treesitter.language.register("markdown", "mdx") -- the someft filetype will use the python parser and queries.
-
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
@@ -30,7 +9,6 @@ require("nvim-treesitter.configs").setup({
 
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = true,
 	},
 	indent = { enable = true },
 	incremental_selection = {
@@ -87,3 +65,25 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 })
+
+local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+parser_config.templ = {
+	install_info = {
+		url = "https://github.com/vrischmann/tree-sitter-templ.git",
+		files = { "src/parser.c", "src/scanner.c" },
+		branch = "master",
+	},
+}
+
+parser_config.gotmpl = {
+	install_info = {
+		url = "https://github.com/ngalaiko/tree-sitter-go-template",
+		files = { "src/parser.c" },
+	},
+	filetype = "gotmpl",
+	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "html" },
+}
+
+vim.treesitter.language.register("markdown", "mdx") -- the someft filetype will use the python parser and queries.
+

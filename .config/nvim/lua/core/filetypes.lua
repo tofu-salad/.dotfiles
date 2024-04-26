@@ -7,13 +7,7 @@ vim.filetype.add({
 
 vim.filetype.add({
 	extension = {
-		gohtmltmpl = "gohtmltmpl",
-	},
-})
-
-vim.filetype.add({
-	extension = {
-		gotmpl = "gohtmltmpl",
+		gotmpl = "gotmpl",
 	},
 })
 
