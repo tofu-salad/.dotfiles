@@ -141,12 +141,13 @@ return {
 			vim.opt.background = "dark"
 			vim.cmd.colorscheme("oxocarbon")
 			vim.api.nvim_set_hl(0, "LineNrAbove", { fg = oxocarbon.oxocarbon.base02 })
-			vim.api.nvim_set_hl(0, "LineNr", { fg = oxocarbon.oxocarbon.base05 })
+			vim.api.nvim_set_hl(0, "LineNr", { fg = oxocarbon.oxocarbon.base04 })
 			vim.api.nvim_set_hl(0, "LineNrBelow", { fg = oxocarbon.oxocarbon.base02 })
-			vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = oxocarbon.oxocarbon.blend })
-			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = oxocarbon.oxocarbon.blend })
-			vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.oxocarbon.blend })
-			vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = oxocarbon.oxocarbon.blend })
+
+			vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = oxocarbon.base02 })
+			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = oxocarbon.base02 })
+			vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.base02 })
+			vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = oxocarbon.base02 })
 			vim.api.nvim_set_hl(
 				0,
 				"TelescopePreviewTitle",
@@ -163,18 +164,5 @@ return {
 				{ fg = oxocarbon.oxocarbon.base00, bg = oxocarbon.oxocarbon.base08 }
 			)
 		end,
-	},
-	{
-		"ray-x/go.nvim",
-		dependencies = { -- optional packages
-			"neovim/nvim-lspconfig",
-			"nvim-treesitter/nvim-treesitter",
-		},
-		config = function()
-			require("go").setup()
-		end,
-		event = { "CmdlineEnter" },
-		ft = { "go", "gomod" },
-		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 }

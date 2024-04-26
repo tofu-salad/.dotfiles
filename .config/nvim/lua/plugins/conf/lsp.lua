@@ -62,7 +62,13 @@ local servers = {
 	svelte = {},
 	clangd = {},
 	gopls = {
-		filetypes = { "go", "gomod", "gowork", "gotmpl", "gohtmltmpl" },
+		settings = {
+			gopls = {
+				templateExtensions = { "html", "gotmpl" },
+			},
+		},
+		filetypes = { "go", "gomod", "gowork", "html" },
+		root_pattern = { "go.work", "go.mod" },
 	},
 	pyright = {},
 	rust_analyzer = {
@@ -130,7 +136,7 @@ local servers = {
 		init_options = { userLanguages = { templ = "html" } },
 	},
 	html = {
-		filetypes = { "html", "twig", "hbs", "templ" },
+		filetypes = { "html", "twig", "hbs", "templ", "gotmpl" },
 	},
 	lua_ls = {
 		Lua = {
@@ -170,7 +176,8 @@ else
 			lspconfig[server_name].setup({
 				capabilities = capabilities,
 				on_attach = on_attach,
-				settings = servers[server_name],
+				settings = (servers[server_name] or {}).settings,
+				root_pattern = (servers[server_name] or {}).root_pattern,
 				filetypes = (servers[server_name] or {}).filetypes,
 				init_options = (servers[server_name] or {}).init_options,
 			})
