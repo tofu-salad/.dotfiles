@@ -1,8 +1,8 @@
 [global]
 follow = mouse
-geometry = "400x5-5+35"
 notification_limit = 3
-origin = bottom-right
+origin = top-right 
+offset=10x10
 indicate_hidden = true
 separator_height = 0
 padding = 30
@@ -12,12 +12,11 @@ sort = false
 idle_threshold = 0
 layer = top
 gap_size = 0
-font = Roboto 12
+font = Ubuntu 12
 line_height = 4
 corner_radius = 8
 mouse_middle_click = context
 markup = full
-icon_position = off
 close = ctrl+space
 close_all = ctrl+shift+space
 history = ctrl+grave

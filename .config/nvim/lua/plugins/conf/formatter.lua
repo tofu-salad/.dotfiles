@@ -4,6 +4,8 @@ require("conform").setup({
 		javascript = { { "prettierd", "prettier" } },
 		html = { { "prettierd", "prettier" } },
 		json = { { "prettierd", "prettier" } },
+		jsonc = { { "jq", "prettierd" } },
+		gotmpl = { { "prettierd", "prettier" } },
 		javascriptreact = { { "prettierd", "prettier" } },
 		typescript = { { "prettierd", "prettier" } },
 		typescriptreact = { { "prettierd", "prettier" } },
