@@ -6,8 +6,13 @@ vim.filetype.add({
 })
 
 vim.filetype.add({
-	extension = {
-		gotmpl = "gotmpl",
+	extension = { rasi = "rasi" },
+	pattern = {
+		[".*/waybar/.*/*.conf"] = "jsonc",
+		[".*/waybar/config"] = "jsonc",
+		[".*/mako/config"] = "dosini",
+		[".*/kitty/*.conf"] = "bash",
+		[".*/hypr/.*%.conf"] = "hyprlang",
 	},
 })
 

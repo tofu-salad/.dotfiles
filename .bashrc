@@ -21,6 +21,9 @@ function parse_git_branch() {
         echo ""
     fi
 }
+if [ -f ${HOME}/.dir_colors ]; then
+  eval $(dircolors ~/.dir_colors)
+fi
 
 # get current status of git repo
 function parse_git_dirty {
@@ -152,4 +155,3 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-

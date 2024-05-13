@@ -61,13 +61,14 @@ local servers = {
 	cssls = {},
 	svelte = {},
 	clangd = {},
+	htmx = {},
 	gopls = {
 		settings = {
 			gopls = {
 				templateExtensions = { "html", "gotmpl" },
 			},
 		},
-		filetypes = { "go", "gomod", "gowork", "html" },
+		filetypes = { "go", "gomod", "gowork", "gotmpl", "html" },
 		root_pattern = { "go.work", "go.mod" },
 	},
 	pyright = {},

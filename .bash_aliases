@@ -4,8 +4,8 @@
 alias ll='LC_COLLATE=C ls -ialF --group-directories-first'
 alias la='ls -A'
 alias l='ls -CF'
+
 if [ -x "$(which dircolors)" ]; then
-    alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
@@ -13,7 +13,10 @@ if [ -x "$(which dircolors)" ]; then
     alias egrep='egrep --color=auto'
 fi
 if command -v exa > /dev/null;
-    then alias ls='exa -al --color=always --group-directories-first';
+    then 
+        alias ll='exa -al --color=always --group-directories-first';
+        alias la='exa -al --color=always';
+        alias l='exa'
 fi
 
 # Add an "alert" alias for long running commands.  Use like so:

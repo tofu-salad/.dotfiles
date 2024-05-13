@@ -5,7 +5,7 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = { "go", "lua", "python", "rust", "tsx", "javascript", "typescript", "vimdoc", "vim" },
 
 	-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-	auto_install = false,
+	auto_install = true,
 
 	highlight = {
 		enable = true,
@@ -75,15 +75,3 @@ parser_config.templ = {
 		branch = "master",
 	},
 }
-
-parser_config.gotmpl = {
-	install_info = {
-		url = "https://github.com/ngalaiko/tree-sitter-go-template",
-		files = { "src/parser.c" },
-	},
-	filetype = "gotmpl",
-	used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "html" },
-}
-
-vim.treesitter.language.register("markdown", "mdx") -- the someft filetype will use the python parser and queries.
-
