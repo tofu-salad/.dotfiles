@@ -24,6 +24,9 @@ fi
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias dotfiles='$(which git) --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias vim='nvim'
+
+if command -v nvim > /dev/null; then 
+    alias vim='nvim'
+fi
 alias H='./.local/bin/wrappedhl'
 alias update-neovim='ansible-playbook --ask-become-pass $HOME/Tmp/ansible/neovim.yml'

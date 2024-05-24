@@ -1,9 +1,18 @@
 #!/usr/bin/env bash
 
-export VISUAL=vim
-export EDITOR="$VISUAL"
-export GIT_EDITOR=vim
+
 export TERM=xterm-256color
+
+if command -v nvim > /dev/null;
+    then 
+        export visual=nvim
+        export editor="$visual"
+        export git_editor=nvim
+    else
+        export visual=vim
+        export editor="$visual"
+        export git_editor=vim
+fi
 
 bind -x '"\C-t": $HOME/Scripts/tmux-sessionizer'
 bind "set completion-ignore-case on"
