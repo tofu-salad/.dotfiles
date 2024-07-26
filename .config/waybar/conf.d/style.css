@@ -1,5 +1,5 @@
 * {
-    font-family: FontAwesome, "Ubuntu";
+    font-family: FontAwesome, "Inter Variable";
     border: none;
     border-radius: 0;
     font-size: 0.90rem;
@@ -83,10 +83,13 @@ tooltip label {
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#window,
 #tray,
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#language,
+#title,
 #mpd {
   margin: 0.125rem;
   padding-left: 0.4rem;
