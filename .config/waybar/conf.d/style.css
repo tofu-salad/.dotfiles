@@ -1,18 +1,18 @@
 * {
-    font-family: FontAwesome, "Inter Variable";
+    font-family: "Inter Variable", "Font Awesome 6 Free";
     border: none;
     border-radius: 0;
-    font-size: 0.90rem;
+    font-size: 0.875rem;
     min-height: 0;
 }
 
 
 window#waybar {
-    background: #161616;
+    background: rgba(22, 22, 22, 1)
 }
 
 tooltip label {
-  color: white;
+    color: white;
 }
 
 #workspaces button {
@@ -26,7 +26,9 @@ tooltip label {
     border-bottom: 0.1875rem solid white;
 }
 
-#mode, #clock, #battery {
+#mode,
+#clock,
+#battery {
     padding: 0 0.625rem;
 }
 
@@ -63,12 +65,16 @@ tooltip label {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 0;
 }
 
+.modules-left>widget:first-child>#custom-search {
+    margin: 0 0.4rem;
+}
+
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
 
@@ -91,8 +97,8 @@ tooltip label {
 #language,
 #title,
 #mpd {
-  margin: 0.125rem;
-  padding-left: 0.4rem;
-  padding-right: 0.4rem;
-  color: #ffffff;
+    margin: 0.125rem;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    color: #ffffff;
 }

@@ -62,15 +62,7 @@ local servers = {
 	svelte = {},
 	clangd = {},
 	htmx = {},
-	gopls = {
-		settings = {
-			gopls = {
-				templateExtensions = { "html", "gotmpl" },
-			},
-		},
-		filetypes = { "go", "gomod", "gowork", "gotmpl", "html" },
-		root_pattern = { "go.work", "go.mod" },
-	},
+	gopls = {},
 	pyright = {},
 	rust_analyzer = {
 		cachePriming = { enable = false },
@@ -137,7 +129,7 @@ local servers = {
 		init_options = { userLanguages = { templ = "html" } },
 	},
 	html = {
-		filetypes = { "html", "twig", "hbs", "templ", "gotmpl" },
+		filetypes = { "html", "twig", "hbs", "templ", "gotmpl", "typescript" },
 	},
 	lua_ls = {
 		Lua = {

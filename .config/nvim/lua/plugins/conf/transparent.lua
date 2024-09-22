@@ -1,4 +1,2 @@
-require("transparent").setup({
-	exclude_groups = { "StatusLine" },
-})
+require("transparent").setup({})
 require("transparent").clear_prefix("gitsigns")
