@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #
 # enable color support of ls and also add handy aliases
+alias shutdown='systemctl poweroff'
+alias reboot='systemctl reboot'
 alias ll='LC_COLLATE=C ls -ialF --group-directories-first'
 alias la='ls -A'
 alias l='ls -CF'

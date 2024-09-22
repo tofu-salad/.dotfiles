@@ -116,6 +116,9 @@ return {
 
 			-- Comment
 			require("plugins.conf.comment")
+
+			-- Themes
+			require("plugins.conf.themes")
 		end,
 	},
 	{
@@ -130,38 +133,6 @@ return {
 		config = function()
 			require("plugins.conf.transparent")
 		end,
-	},
-	{
-		"nyoom-engineering/oxocarbon.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			local oxocarbon = require("oxocarbon")
-			vim.opt.background = "dark"
-			vim.cmd.colorscheme("oxocarbon")
-			vim.api.nvim_set_hl(0, "LineNrAbove", { fg = oxocarbon.oxocarbon.base02 })
-			vim.api.nvim_set_hl(0, "LineNr", { fg = oxocarbon.oxocarbon.base04 })
-			vim.api.nvim_set_hl(0, "LineNrBelow", { fg = oxocarbon.oxocarbon.base02 })
-
-			vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = oxocarbon.base02 })
-			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = oxocarbon.base02 })
-			vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.base02 })
-			vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = oxocarbon.base02 })
-			vim.api.nvim_set_hl(
-				0,
-				"TelescopePreviewTitle",
-				{ fg = oxocarbon.oxocarbon.base00, bg = oxocarbon.oxocarbon.base12 }
-			)
-			vim.api.nvim_set_hl(
-				0,
-				"TelescopePromptTitle",
-				{ fg = oxocarbon.oxocarbon.base08, bg = oxocarbon.oxocarbon.blend }
-			)
-			vim.api.nvim_set_hl(
-				0,
-				"TelescopeResultsTitle",
-				{ fg = oxocarbon.oxocarbon.base00, bg = oxocarbon.oxocarbon.base08 }
-			)
-		end,
+		l,
 	},
 }
