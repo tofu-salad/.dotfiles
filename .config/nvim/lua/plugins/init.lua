@@ -129,21 +129,27 @@ return {
 		end,
 	},
 	{
-		"0xstepit/flow.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
+		"nyoom-engineering/oxocarbon.nvim",
 		config = function()
-			require("flow").setup({
-				dark_theme = true, -- Set the theme with dark background.
-				high_contrast = false, -- Make the dark background darker or the light background lighter.
-				transparent = true, -- Set transparent background.
-				fluo_color = "pink", -- Color used as fluo. Available values are pink, yellow, orange, or green.
-				mode = "dark", -- Mode of the colors. Available values are: dark, bright, desaturate, or base.
-				aggressive_spell = false, -- Use colors for spell check.
-			})
+			local oxocarbon = require("oxocarbon").oxocarbon
 
-			vim.cmd("colorscheme flow")
+			vim.opt.background = "dark"
+			vim.cmd.colorscheme("oxocarbon")
+
+			vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = oxocarbon.base03, bg = oxocarbon.base08 })
+
+			-- Markdown fix
+			for l = 1, 6 do
+				vim.api.nvim_set_hl(0, "@markup.heading." .. l .. ".markdown", { fg = oxocarbon.base03, bold = true })
+			end
+			vim.api.nvim_set_hl(0, "@markup.list.markdown", { fg = oxocarbon.base07 })
+			vim.api.nvim_set_hl(0, "@markup.link.markdown_inline", { underline = false })
+			vim.api.nvim_set_hl(0, "@markup.link.url.markdown_inline", { fg = oxocarbon.base14, underline = false })
+			vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", { fg = oxocarbon.base14 })
 		end,
 	},
 }

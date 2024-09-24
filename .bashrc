@@ -5,13 +5,13 @@ export TERM=xterm-256color
 
 if command -v nvim > /dev/null;
     then 
-        export visual=nvim
-        export editor="$visual"
-        export git_editor=nvim
+        export VISUAL=nvim
+        export EDITOR="$visual"
+        export GIT_EDITOR=nvim
     else
-        export visual=vim
-        export editor="$visual"
-        export git_editor=vim
+        export VISUAL=vim
+        export EDITOR="$visual"
+        export GIT_EDITOR=vim
 fi
 
 bind -x '"\C-t": $HOME/Scripts/tmux-sessionizer'
