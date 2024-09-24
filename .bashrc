@@ -165,3 +165,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
+
+# Created by `pipx` on 2024-09-24 22:01:28
+export PATH="$PATH:/home/tofu/.local/bin"
