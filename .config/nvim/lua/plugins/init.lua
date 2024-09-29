@@ -136,6 +136,7 @@ return {
 			vim.opt.background = "dark"
 			vim.cmd.colorscheme("oxocarbon")
 
+			-- Telescope fix
 			vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
 			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
 			vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.blend })
