@@ -61,7 +61,6 @@ local servers = {
 	cssls = {},
 	svelte = {},
 	clangd = {},
-	htmx = {},
 	gopls = {},
 	pyright = {},
 	rust_analyzer = {

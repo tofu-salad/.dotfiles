@@ -1,3 +1,5 @@
+[window]
+padding = { x = 8, y = 8 }
 [colors]
 footer_bar = { background = "#262626", foreground = "#ffffff"}
 [colors.primary]
