@@ -10,7 +10,7 @@ require("conform").setup({
 		typescript = { "prettierd", "prettier", stop_after_first = false },
 		typescriptreact = { "prettierd", "prettier", stop_after_first = false },
 		rust = { "rustfmt" },
-		nix = { "nixpkgs_fmt" },
+		nix = { "nixfmt" },
 		sql = { "sql_formatter" },
 	},
 })

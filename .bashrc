@@ -141,7 +141,7 @@ if ! shopt -oq posix; then
 fi
 
 
-PS1="\[\e[32m\]\w\[\e[m\] \[\e[33m\]\`parse_git_branch\`\[\e[m\] \\$ "
+PS1='\[\e[32m\]\w\[\e[m\] \[\e[33m\]$(parse_git_branch)\[\e[m\]$(if [ -n "$IN_NIX_SHELL" ]; then echo " \[\e[34m\][nix shell]\[\e[m\]"; fi) \$ '
 
 # go paths
 export PATH=$PATH:/usr/local/go/bin
@@ -164,7 +164,6 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
 
 # Created by `pipx` on 2024-09-24 22:01:28
 export PATH="$PATH:/home/tofu/.local/bin"

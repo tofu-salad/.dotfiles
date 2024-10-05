@@ -63,6 +63,7 @@ local servers = {
 	clangd = {},
 	gopls = {},
 	pyright = {},
+	ts_ls = {},
 	rust_analyzer = {
 		cachePriming = { enable = false },
 	},
@@ -148,8 +149,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 if NixOS then
-	servers.html.cmd = { "html-languageserver", "--stdio" }
-	servers.cssls.cmd = { "css-languageserver", "--stdio" }
+	servers.html.cmd = { "vscode-html-language-server", "--stdio" }
+	servers.cssls.cmd = { "vscode-css-language-server", "--stdio" }
+	servers.ts_ls.cmd = { "typescript-language-server", "--stdio" }
 	for server_name, server_config in pairs(servers) do
 		lspconfig[server_name].setup({
 			capabilities = capabilities,

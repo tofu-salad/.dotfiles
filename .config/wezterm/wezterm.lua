@@ -19,7 +19,6 @@ config.color_scheme = 'Oxocarbon Dark (Gogh)'
 -- config.window_background_opacity = 0
 config.enable_tab_bar = false
 config.enable_wayland = true
-config.font = wezterm.font("GeistMono NF", { weight = 600 })
 config.font_size = 10
 config.window_close_confirmation = 'NeverPrompt'
 local dimmer = { brightness = 0.008 }
@@ -34,7 +33,7 @@ config.background = {
 	},
 	{
 		source = {
-			File = "/home/soda/Pictures/anime/rocketgurl.png",
+			File = "/home/tofu/Pictures/anime/rocketgurl.png",
 		},
 		repeat_x = "NoRepeat",
 		repeat_y = "NoRepeat",
