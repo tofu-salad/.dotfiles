@@ -1,5 +1,5 @@
 * {
-    font-family: "Ubuntu Sans", "Font Awesome 6 Free";
+    font-family: "IBM Plex Sans", "Font Awesome 6 Free";
     border: none;
     border-radius: 0;
     font-size: 1rem;
@@ -24,6 +24,9 @@ tooltip label {
 }
 
 #workspaces button.focused {
+    border-bottom: 0.1875rem solid white;
+}
+#workspaces button.active {
     border-bottom: 0.1875rem solid white;
 }
 
@@ -71,6 +74,7 @@ tooltip label {
 }
 
 .modules-left>widget:first-child>#custom-search {
+    color: white;
     margin: 0 0.4rem;
 }
 
