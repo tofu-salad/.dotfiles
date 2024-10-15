@@ -118,7 +118,7 @@ return {
 	},
 	{
 		"ThePrimeagen/harpoon",
-		keys = { { "<leader>a", mode = "n" }, { "C-e", mode = "n" } },
+		keys = { { "<leader>h", mode = "n" }, { "C-e", mode = "n" } },
 		config = function()
 			require("plugins.conf.harpoon")
 		end,
