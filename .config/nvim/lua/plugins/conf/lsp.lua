@@ -98,7 +98,6 @@ local servers = {
 			"jade",
 			"leaf",
 			"liquid",
-			"markdown",
 			"mdx",
 			"mustache",
 			"njk",
