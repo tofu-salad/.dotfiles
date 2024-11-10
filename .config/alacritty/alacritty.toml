@@ -1,5 +1,6 @@
 [font]
 normal = { family = "IBM Plex Mono", style = "Medium" }
+size = 11.25
 [window]
 padding = { x = 8, y = 8 }
 [colors]
