@@ -1,8 +1,8 @@
-mode=run
+mode=drun
 single_click=true
 insensitive=true
-prompt= Search...
-height=180
+prompt=Search...
+height=200
 width=500
-term=kitty
+term=alacritty
 hide_scroll=true

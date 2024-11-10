@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-killall waybar; 
+pkill waybar; 
 ~/.config/waybar/hyprland_waybar.sh &

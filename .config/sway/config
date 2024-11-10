@@ -2,10 +2,7 @@ include ./conf.d/exec.conf
 include ./conf.d/input.conf
 include ./conf.d/binds.conf
 include ./conf.d/monitor.conf
-include ./conf.d/appearance.conf
 include ./conf.d/rules.conf
 include ./conf.d/startup_apps.conf
 include ./themes/default.conf
-
-
-
+include ./conf.d/appearance.conf
