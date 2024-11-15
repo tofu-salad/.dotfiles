@@ -4,5 +4,5 @@ insensitive=true
 prompt=Search...
 height=200
 width=500
-term=alacritty
+term=foot
 hide_scroll=true

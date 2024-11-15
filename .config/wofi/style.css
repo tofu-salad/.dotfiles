@@ -2,8 +2,8 @@ window {
   margin: 1px;
   border: 1px solid rgba(99,99,99,1);
   border-radius: 8px;
-  font-family: "Liga SFMono Nerd Font";
-  background-color: #1A1A1A;
+  font-family: "BlexMono Nerd Font";
+  background-color: rgba(0,0,0,0);
 }
 
 #input {
