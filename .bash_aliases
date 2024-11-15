@@ -32,3 +32,12 @@ if command -v nvim > /dev/null; then
 fi
 alias H='./.local/bin/wrappedhl'
 alias update-neovim='ansible-playbook --ask-become-pass $HOME/Tmp/ansible/neovim.yml'
+
+# nixos specific
+if [[ -f /etc/os-release ]] && grep -q "ID=nixos" /etc/os-release; then
+    alias rebuild-nixos='sudo nixos-rebuild switch --flake $HOME/.config/nixos/#desktop'
+    alias update-nixos='nix flake update --flake $HOME/.config/nixos && sudo nixos-rebuild switch  --flake $HOME/.config/nixos/#desktop'
+else
+	echo "not running NIXOS"
+fi
+

@@ -153,9 +153,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH=$BUN_INSTALL/bin:$PATH
 export PATH="$PATH:/home/soda/.local/bin"
 
-if test -e "$HOME/.config/nixos"; then
-    eval "$(direnv hook bash)"
-fi
 
 if test -e "$HOME/.cargo/"; then
     . $HOME/.cargo/env
@@ -167,3 +164,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Created by `pipx` on 2024-09-24 22:01:28
 export PATH="$PATH:/home/tofu/.local/bin"
+
+
+if test -e "$HOME/.config/nixos"; then
+    eval "$(direnv hook bash)"
+fi
