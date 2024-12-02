@@ -32,7 +32,7 @@ return {
 		opts = {
 			notification = {
 				window = {
-					winblend = 0,
+					winblend = 100,
 					zindex = 55,
 				},
 			},
@@ -118,7 +118,7 @@ return {
 	},
 	{
 		"ThePrimeagen/harpoon",
-		keys = { { "<leader>h", mode = "n" }, { "C-e", mode = "n" } },
+		keys = { "<leader>h" },
 		config = function()
 			require("plugins.conf.harpoon")
 		end,

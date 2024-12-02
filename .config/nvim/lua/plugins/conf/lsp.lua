@@ -9,7 +9,7 @@ local custom_format = function()
 		local cmd = "templ fmt " .. vim.fn.shellescape(filename)
 		vim.fn.jobstart(cmd, {
 			on_exit = function()
-				-- Reload the buffer only if it's still the current buffer
+				-- reload the buffer only if it's still the current buffer
 				if vim.api.nvim_get_current_buf() == bufnr then
 					vim.cmd("e!")
 				end
@@ -19,117 +19,64 @@ local custom_format = function()
 		vim.cmd("Format")
 	end
 end
---  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(client, bufnr)
-	client.server_capabilities.semanticTokensProvider = nil
-	local nmap = function(keys, func, desc, options)
-		if desc then
-			desc = "LSP: " .. desc
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
+	callback = function(event)
+		local map = function(keys, func, desc, mode)
+			mode = mode or "n"
+			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		options = options or {}
-		options.buffer = bufnr
-		vim.keymap.set("n", keys, func, options)
-	end
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		if client then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
+		-- keybinds
+		map("<leader>lr", vim.lsp.buf.rename, "[l]sp [r]ename")
+		map("<leader>la", vim.lsp.buf.code_action, "[l]sp code [a]ction")
+		map("<leader>lf", custom_format, "[l]sp custom [f]ormat", { remap = false })
 
-	nmap("<leader>lr", vim.lsp.buf.rename, "[L]sp [R]ename")
-	nmap("<leader>la", vim.lsp.buf.code_action, "[L]sp code [A]ction")
-	nmap("<leader>lf", custom_format, "[L]sp custom [F]ormat", { remap = false })
+		map("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
+		map("gr", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
+		map("gI", vim.lsp.buf.implementation, "[g]oto [I]mplementation")
+		map("<leader>D", vim.lsp.buf.type_definition, "type [D]efinition")
+		map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[d]ocument [s]ymbols")
+		map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[w]orkspace [s]ymbols")
 
-	nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-	nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-	nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-	nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
-	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+		-- see `:help K` for why this keymap
+		map("K", vim.lsp.buf.hover, "hover documentation")
+		map("<C-k>", vim.lsp.buf.signature_help, "signature documentation")
 
-	-- See `:help K` for why this keymap
-	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+		-- lesser used lsp functionality
+		map("gd", vim.lsp.buf.declaration, "[g]oto [d]eclaration")
+		map("<leader>wa", vim.lsp.buf.add_workspace_folder, "[w]orkspace [a]dd folder")
+		map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[w]orkspace [r]emove folder")
+		map("<leader>wl", function()
+			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		end, "[w]orkspace [l]ist folders")
+	end,
+})
 
-	-- Lesser used LSP functionality
-	nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-	nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-	nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-	nmap("<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, "[W]orkspace [L]ist Folders")
-end
+local is_nixos = require("core.utils").detect_nixos()
+local lspconfig = require("lspconfig")
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
 local servers = {
 	astro = {},
-	cssls = {},
 	svelte = {},
+	cssls = {},
 	clangd = {},
 	gopls = {},
-	pyright = {},
 	ts_ls = {},
 	rust_analyzer = {
 		cachePriming = { enable = false },
 	},
 	nil_ls = {},
-	templ = {},
-	htmx = {
-		filetypes = { "html", "templ" },
-	},
-	tailwindcss = {
-		filetypes = {
-			"aspnetcorerazor",
-			"astro",
-			"astro-markdown",
-			"blade",
-			"clojure",
-			"django-html",
-			"htmldjango",
-			"edge",
-			"eelixir",
-			"elixir",
-			"ejs",
-			"erb",
-			"eruby",
-			"gohtml",
-			"gohtmltmpl",
-			"haml",
-			"handlebars",
-			"hbs",
-			"html",
-			"html-eex",
-			"heex",
-			"jade",
-			"leaf",
-			"liquid",
-			"mdx",
-			"mustache",
-			"njk",
-			"nunjucks",
-			"php",
-			"razor",
-			"slim",
-			"twig",
-			"css",
-			"less",
-			"postcss",
-			"sass",
-			"scss",
-			"stylus",
-			"sugarss",
-			"javascript",
-			"javascriptreact",
-			"reason",
-			"rescript",
-			"typescript",
-			"typescriptreact",
-			"vue",
-			"svelte",
-			"templ",
-			"gotmpl",
-			"tmpl",
-		},
-		init_options = { userLanguages = { templ = "html" } },
-	},
-	html = {
-		filetypes = { "html", "twig", "hbs", "templ", "gotmpl", "typescript" },
-	},
+	htmx = {},
+	tailwindcss = {},
+	html = {},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -142,38 +89,26 @@ local servers = {
 	},
 }
 
-local NixOS = require("core.utils").detect_nixos()
-local lspconfig = require("lspconfig")
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
-if NixOS then
-	servers.html.cmd = { "vscode-html-language-server", "--stdio" }
-	servers.cssls.cmd = { "vscode-css-language-server", "--stdio" }
-	servers.ts_ls.cmd = { "typescript-language-server", "--stdio" }
+-- nixos-specific lsp configuration with server overrides
+if is_nixos then
 	for server_name, server_config in pairs(servers) do
 		lspconfig[server_name].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = server_config,
-			filetypes = (server_config or {}).filetypes,
-			cmd = (server_config or {}).cmd,
+			capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {}),
 		})
 	end
 else
-	-- Ensure the servers above are installed
-	local mason_lspconfig = require("mason-lspconfig")
-
-	mason_lspconfig.setup_handlers({
-		function(server_name)
-			lspconfig[server_name].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-				settings = (servers[server_name] or {}).settings,
-				root_pattern = (servers[server_name] or {}).root_pattern,
-				filetypes = (servers[server_name] or {}).filetypes,
-				init_options = (servers[server_name] or {}).init_options,
-			})
-		end,
+	-- use mason for non-nixos systems
+	local ensure_installed = vim.tbl_keys(servers)
+	vim.list_extend(ensure_installed, { "stylua" })
+	require("mason").setup()
+	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+	require("mason-lspconfig").setup({
+		handlers = {
+			function(server_name)
+				local server = servers[server_name] or {}
+				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+				lspconfig[server_name].setup(server)
+			end,
+		},
 	})
 end

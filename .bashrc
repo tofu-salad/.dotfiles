@@ -141,7 +141,7 @@ if ! shopt -oq posix; then
 fi
 
 
-PS1='\[\e[32m\]\w\[\e[m\] \[\e[33m\]$(parse_git_branch)\[\e[m\]$(if [ -n "$IN_NIX_SHELL" ]; then echo " \[\e[34m\][nix shell]\[\e[m\]"; fi) \$ '
+PS1='$(if [ "$FHS" = "1" ]; then echo -e "\[\e[34m\](fhs) \[\e[m\]"; fi)\[\e[32m\]\w\[\e[m\] \[\e[33m\]$(parse_git_branch)\[\e[m\]$(if [ -n "$IN_NIX_SHELL" ]; then echo " \[\e[34m\][nix shell]\[\e[m\]"; fi) \$ '
 
 # go paths
 export PATH=$PATH:/usr/local/go/bin

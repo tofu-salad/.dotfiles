@@ -1,12 +1,12 @@
 local M = {}
 
 function M.detect_nixos()
-	local file = io.open("/etc/nixos", "r") -- Check if a file indicative of NixOS exists
+	local file = io.open("/etc/nixos", "r")
 	if file then
 		file:close()
-		return true -- File found, indicating NixOS
+		return true
 	else
-		return false -- File not found, probably not NixOS
+		return false
 	end
 end
 

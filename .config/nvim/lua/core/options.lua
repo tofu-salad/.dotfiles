@@ -3,17 +3,16 @@ vim.opt.incsearch = true
 vim.opt.colorcolumn = "80"
 vim.opt.clipboard = ""
 
--- Save undo history
+-- save undo history
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
+-- mnable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
--- Don't show the mode, since it's already in status line
+-- don't show the mode, since it's already in status line
 vim.opt.showmode = false
 
 -- Enable break indent
@@ -40,7 +39,7 @@ vim.opt.splitbelow = true
 -- vim.opt.list = true
 -- vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
--- Preview substitutions live, as you type!
+-- preview substitutions live, as you type!
 vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
