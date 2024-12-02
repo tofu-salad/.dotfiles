@@ -1,3 +1,23 @@
+
+@define-color base00 rgba(22, 22, 22, 1);   /* #161616 */
+@define-color base01 rgba(38, 38, 38, 1);   /* #262626 */
+@define-color base02 rgba(57, 57, 57, 1);   /* #393939 */
+@define-color base03 rgba(82, 82, 82, 1);   /* #525252 */
+@define-color base04 rgba(221, 225, 230, 0.25);/* #dde1e6 */
+@define-color base05 rgba(242, 244, 248, 1);/* #f2f4f8 */
+@define-color base06 rgba(255, 255, 255, 1);/* #ffffff */
+@define-color base07 rgba(8, 189, 186, 1);  /* #08bdba */
+@define-color base08 rgba(61, 221, 217, 1); /* #3ddbd9 */
+@define-color base09 rgba(120, 169, 255, 1);/* #78a9ff */
+@define-color base0A rgba(238, 83, 150, 1); /* #ee5396 */
+@define-color base0B rgba(51, 177, 255, 1); /* #33b1ff */
+@define-color base0C rgba(255, 126, 182, 1);/* #ff7eb6 */
+@define-color base0D rgba(66, 190, 101, 1); /* #42be65 */
+@define-color base0E rgba(190, 149, 255, 1);/* #be95ff */
+@define-color base0F rgba(130, 207, 255, 1);/* #82cfff */
+@define-color clear rgba(255, 255, 255, 0); /* #ffffff00 (fully transparent) */
+
+
 * {
     font-family: "Inter Variable", "Font Awesome 6 Free";
     border: none;
@@ -10,6 +30,13 @@
 
 window#waybar {
     background: rgba(15, 15, 15, 0.98)
+}
+
+tooltip {
+    background: @base01;
+    border: 0.5px solid @base04;
+    border-radius: 0.25rem;
+
 }
 
 tooltip label {
