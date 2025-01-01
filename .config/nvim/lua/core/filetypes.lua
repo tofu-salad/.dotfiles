@@ -1,10 +1,3 @@
--- additional filetypes
-vim.filetype.add({
-	extension = {
-		templ = "templ",
-	},
-})
-
 vim.filetype.add({
 	extension = { rasi = "rasi" },
 	pattern = {
@@ -28,5 +21,24 @@ vim.filetype.add({
 	pattern = {
 		["~/.config/sway/config"] = "swayconfig",
 		["~/.config/sway/conf.d/*.conf"] = "swayconfig",
+	},
+})
+vim.filetype.add({
+	extension = {
+		templ = "templ",
+	},
+})
+
+vim.filetype.add({
+	extension = { gotmpl = "gotmpl" },
+	pattern = {
+		[".*"] = function(path)
+			local root_dir = vim.fn.getcwd()
+			local go_mod_path = root_dir .. "/go.mod"
+
+			if vim.fn.filereadable(go_mod_path) == 1 and path:match("%.html$") then
+				return "gotmpl"
+			end
+		end,
 	},
 })

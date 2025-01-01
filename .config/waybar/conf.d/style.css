@@ -9,12 +9,12 @@
 @define-color base07 rgba(8, 189, 186, 1);  /* #08bdba */
 @define-color base08 rgba(61, 221, 217, 1); /* #3ddbd9 */
 @define-color base09 rgba(120, 169, 255, 1);/* #78a9ff */
-@define-color base0A rgba(238, 83, 150, 1); /* #ee5396 */
-@define-color base0B rgba(51, 177, 255, 1); /* #33b1ff */
-@define-color base0C rgba(255, 126, 182, 1);/* #ff7eb6 */
-@define-color base0D rgba(66, 190, 101, 1); /* #42be65 */
-@define-color base0E rgba(190, 149, 255, 1);/* #be95ff */
-@define-color base0F rgba(130, 207, 255, 1);/* #82cfff */
+@define-color base10 rgba(238, 83, 150, 1); /* #ee5396 */
+@define-color base11 rgba(51, 177, 255, 1); /* #33b1ff */
+@define-color base12 rgba(255, 126, 182, 1);/* #ff7eb6 */
+@define-color base13 rgba(66, 190, 101, 1); /* #42be65 */
+@define-color base14 rgba(190, 149, 255, 1);/* #be95ff */
+@define-color base15 rgba(130, 207, 255, 1);/* #82cfff */
 @define-color clear rgba(255, 255, 255, 0); /* #ffffff00 (fully transparent) */
 
 
@@ -23,8 +23,7 @@
     border: none;
     border-radius: 0;
     font-size: 1rem;
-    font-weight: 500;
-    min-height: 0;
+    font-weight: 400;
 }
 
 
@@ -130,7 +129,7 @@ tooltip label {
 #title,
 #mpd {
     margin: 0.125rem;
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
     color: #ffffff;
 }
