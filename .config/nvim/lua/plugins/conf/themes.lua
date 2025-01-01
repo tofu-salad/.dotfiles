@@ -1,68 +1,77 @@
-local oxocarbon = {
-	base00 = "#161616",
-	base01 = "#161616",
-	base02 = "#393939",
-	base03 = "#525252",
-	base04 = "#dde1e6",
-	base05 = "#d0d0d0",
-	base06 = "#ffffff",
-	base07 = "#08bdba",
-	base08 = "#78a9ff",
-	base09 = "#3ddbd9",
-	base0A = "#ee5396",
-	base0B = "#be95ff",
-	base0C = "#78a9ff",
-	base0D = "#ff7eb6",
-	base0E = "#78a9ff",
-	base0F = "#3ddbd9",
+return {
+	{
+		"nyoom-engineering/oxocarbon.nvim",
+		config = function()
+			local oxocarbon = require("core.utils").base16.oxocarbon.dark
+
+			vim.opt.background = "dark"
+			vim.cmd.colorscheme("oxocarbon")
+
+			-- Telescope fix
+			vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = oxocarbon.blend })
+			vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = oxocarbon.base03, bg = oxocarbon.base08 })
+
+			-- Markdown fix
+			for l = 1, 6 do
+				vim.api.nvim_set_hl(0, "@markup.heading." .. l .. ".markdown", { fg = oxocarbon.base03, bold = true })
+			end
+			vim.api.nvim_set_hl(0, "@markup.list.markdown", { fg = oxocarbon.base07 })
+			vim.api.nvim_set_hl(0, "@markup.link.markdown_inline", { underline = false })
+			vim.api.nvim_set_hl(0, "@markup.link.url.markdown_inline", { fg = oxocarbon.base14, underline = false })
+			vim.api.nvim_set_hl(0, "@markup.raw.markdown_inline", { fg = oxocarbon.base14 })
+
+			-- CMP Colors
+			-- #525252
+			vim.api.nvim_set_hl(
+				0,
+				"CmpItemAbbrDeprecated",
+				{ bg = "NONE", strikethrough = true, fg = oxocarbon.base03 }
+			)
+
+			-- #BE95FF
+			vim.api.nvim_set_hl(0, "CmpItemKindVariable", { bg = "NONE", fg = oxocarbon.base14 })
+			vim.api.nvim_set_hl(0, "CmpItemKindInterface", { link = "CmpItemKindVariable" })
+			vim.api.nvim_set_hl(0, "CmpItemKindText", { link = "CmpItemKindVariable" })
+			vim.api.nvim_set_hl(0, "CmpItemKindFile", { link = "CmpItemKindVariable" })
+
+			-- #82CFFF
+			vim.api.nvim_set_hl(0, "CmpItemKindFunction", { bg = "NONE", fg = oxocarbon.base15 })
+			vim.api.nvim_set_hl(0, "CmpItemKindMethod", { link = "CmpItemKindFunction" })
+			vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { link = "CmpItemKindFunction" })
+			vim.api.nvim_set_hl(0, "CmpItemKindValue", { link = "CmpItemKindFunction" })
+
+			-- #78A9FF
+			vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = oxocarbon.base09 })
+			vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
+			vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
+			vim.api.nvim_set_hl(0, "CmpItemKindEnum", { link = "CmpItemKindKeyword" })
+
+			-- #FF7EB6
+			vim.api.nvim_set_hl(0, "CmpItemKindField", { bg = "NONE", fg = oxocarbon.base12 })
+			vim.api.nvim_set_hl(0, "CmpItemKindEvent", { link = "CmpItemKindField" })
+
+			-- #42be65
+			vim.api.nvim_set_hl(0, "CmpItemKindFolder", { bg = "NONE", fg = oxocarbon.base13 })
+			vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { link = "CmpItemKindFolder" })
+
+			-- #33B1FF
+			vim.api.nvim_set_hl(0, "CmpItemKindModule", { bg = "NONE", fg = oxocarbon.base11 })
+			vim.api.nvim_set_hl(0, "CmpItemKindClass", { link = "CmpItemKindModule" })
+			vim.api.nvim_set_hl(0, "CmpItemKindStruct", { link = "CmpItemKindModule" })
+			vim.api.nvim_set_hl(0, "CmpItemKindOperator", { link = "CmpItemKindModule" })
+
+			-- #EE5396
+			vim.api.nvim_set_hl(0, "CmpItemKindConstant", { bg = "NONE", fg = oxocarbon.base10 })
+			vim.api.nvim_set_hl(0, "CmpItemKindReference", { link = "CmpItemKindConstant" })
+			vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { link = "CmpItemKindConstant" })
+
+			-- #3DDBD9
+			vim.api.nvim_set_hl(0, "CmpItemKindColor", { bg = "NONE", fg = oxocarbon.base08 })
+			vim.api.nvim_set_hl(0, "CmpItemKindParameter", { link = "CmpItemKindColor" })
+			vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { link = "CmpItemKindColor" })
+		end,
+	},
 }
-require("mini.base16").setup({
-	palette = oxocarbon,
-
-	use_cterm = true,
-
-	plugins = { default = true },
-})
--- -- Number Lines
--- vim.api.nvim_set_hl(0, "LineNrAbove", { fg = oxocarbon.base01 })
--- vim.api.nvim_set_hl(0, "LineNr", { fg = oxocarbon.base04 })
--- vim.api.nvim_set_hl(0, "LineNrBelow", { fg = oxocarbon.base01 })
--- vim.api.nvim_set_hl(0, "SignColumn", { fg = oxocarbon.base01 })
---
--- -- UI
--- vim.api.nvim_set_hl(0, "MsgArea", { fg = oxocarbon.base05 })
---
--- -- Telescope
--- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = oxocarbon.base00 })
--- vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = oxocarbon.base00 })
--- vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = oxocarbon.base00 })
--- vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = oxocarbon.base00 })
--- vim.api.nvim_set_hl(0, "TelescopePreviewTitle", { fg = oxocarbon.base00, bg = oxocarbon.base0F })
--- vim.api.nvim_set_hl(0, "TelescopePromptTitle", { fg = oxocarbon.base0A, bg = oxocarbon.base00 })
--- vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { fg = oxocarbon.base00, bg = oxocarbon.base0A })
---
--- -- Keywords
--- vim.api.nvim_set_hl(0, "@keyword.function", { fg = oxocarbon.base0F })
--- vim.api.nvim_set_hl(0, "@type", { fg = oxocarbon.base08 })
---
--- -- Other Syntax related things
--- vim.api.nvim_set_hl(0, "@operator", { fg = oxocarbon.base08 })
--- vim.api.nvim_set_hl(0, "CursorLineSign", { fg = oxocarbon.base08 })
--- vim.api.nvim_set_hl(0, "@constant.builtin", { fg = oxocarbon.base0F })
--- vim.api.nvim_set_hl(0, "@property", { fg = oxocarbon.base0A })
---
--- -- Netrw
--- vim.api.nvim_set_hl(0, "netrwDir", { fg = oxocarbon.base08 })
--- vim.api.nvim_set_hl(0, "netrwClassify", { fg = oxocarbon.base08 })
---
--- -- Diagnostics
--- vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { fg = oxocarbon.base0A})
--- vim.api.nvim_set_hl(0, "DiagnosticError", { fg = oxocarbon.base0A })
--- vim.api.nvim_set_hl(0, "DiagnosticFloatingError", { bg = oxocarbon.base00, fg = oxocarbon.base0A })
--- vim.api.nvim_set_hl(0, "DiagnosticFloatingInfo", { bg = oxocarbon.base00, fg = oxocarbon.base0B })
--- vim.api.nvim_set_hl(0, "DiagnosticFloatingWarn", { bg = oxocarbon.base00, fg = oxocarbon.base0B })
--- vim.api.nvim_set_hl(0, "MiniStatuslineFilename", { fg = oxocarbon.base05 })
--- vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { fg = oxocarbon.base05 })
---
--- -- Webdev
--- vim.api.nvim_set_hl(0, "Tag", { fg = oxocarbon.base08 })

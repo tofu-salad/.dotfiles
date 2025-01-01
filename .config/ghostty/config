@@ -1,0 +1,9 @@
+theme = "oxocarbon-tofu"
+font-family = "BlexMono Nerd Font Mono Medium"
+font-size = 11
+gtk-titlebar = "false"
+confirm-close-surface = "false"
+window-inherit-font-size = "false"
+shell-integration-features = no-cursor
+cursor-style = "block"
+resize-overlay = "never"

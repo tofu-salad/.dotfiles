@@ -35,7 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- keybinds
 		map("<leader>lr", vim.lsp.buf.rename, "[l]sp [r]ename")
 		map("<leader>la", vim.lsp.buf.code_action, "[l]sp code [a]ction")
-		map("<leader>lf", custom_format, "[l]sp custom [f]ormat", { remap = false })
+		map("<leader>lf", custom_format, "[l]sp custom [f]ormat")
 
 		map("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
 		map("gr", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<C-k>", vim.lsp.buf.signature_help, "signature documentation")
 
 		-- lesser used lsp functionality
-		map("gd", vim.lsp.buf.declaration, "[g]oto [d]eclaration")
+		map("gD", vim.lsp.buf.declaration, "[g]oto [d]eclaration")
 		map("<leader>wa", vim.lsp.buf.add_workspace_folder, "[w]orkspace [a]dd folder")
 		map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[w]orkspace [r]emove folder")
 		map("<leader>wl", function()
@@ -61,7 +61,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local is_nixos = require("core.utils").detect_nixos()
 local lspconfig = require("lspconfig")
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
 local servers = {
 	astro = {},
@@ -76,7 +76,9 @@ local servers = {
 	nil_ls = {},
 	htmx = {},
 	tailwindcss = {},
-	html = {},
+	html = {
+		filetypes = { "gotmpl" },
+	},
 	lua_ls = {
 		Lua = {
 			workspace = { checkThirdParty = false },
@@ -89,25 +91,35 @@ local servers = {
 	},
 }
 
+local function extend_server_filetypes(server_name)
+	local default_filetypes = lspconfig[server_name].document_config.default_config.filetypes or {}
+	local custom_filetypes = (servers[server_name] or {}).filetypes
+
+	local extended_filetypes = custom_filetypes and vim.list_extend(vim.deepcopy(default_filetypes), custom_filetypes)
+		or default_filetypes
+	return extended_filetypes
+end
 -- nixos-specific lsp configuration with server overrides
 if is_nixos then
-	for server_name, server_config in pairs(servers) do
-		lspconfig[server_name].setup({
-			capabilities = vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {}),
+	for server, config in pairs(servers) do
+		lspconfig[server].setup({
+			capabilities = vim.tbl_deep_extend("force", {}, capabilities, config.capabilities or {}),
+			filetypes = extend_server_filetypes(server),
 		})
 	end
+	-- use mason for non- systems
 else
-	-- use mason for non-nixos systems
 	local ensure_installed = vim.tbl_keys(servers)
 	vim.list_extend(ensure_installed, { "stylua" })
 	require("mason").setup()
 	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 	require("mason-lspconfig").setup({
 		handlers = {
-			function(server_name)
-				local server = servers[server_name] or {}
+			function(server)
+				local server = servers[server] or {}
 				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				lspconfig[server_name].setup(server)
+				server.filetypes = extend_server_filetypes(server)
+				lspconfig[server].setup(server)
 			end,
 		},
 	})
