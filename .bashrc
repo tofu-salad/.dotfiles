@@ -14,7 +14,7 @@ if command -v nvim > /dev/null;
         export GIT_EDITOR=vim
 fi
 
-bind -x '"\C-t": $HOME/Scripts/tmux-sessionizer'
+bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
 bind "set completion-ignore-case on"
 
 
