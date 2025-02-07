@@ -2,7 +2,9 @@
 normal = { family = "IosevkaTerm Nerd Font Mono" }
 size = 12
 [window]
-padding = { x = 8, y = 8 }
+decorations = "None"
+startup_mode = "Maximized"
+padding = { x = 4, y = 4 }
 [colors]
 footer_bar = { background = "#262626", foreground = "#ffffff"}
 [colors.primary]
