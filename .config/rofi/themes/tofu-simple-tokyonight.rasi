@@ -1,7 +1,7 @@
 // Thanks to this Repo
 // https://github.com/newmanls/rofi-themes-collection/blob/master/themes/simple-tokyonight.rasi
 * {
-  font:   "Inter Variable 12";
+  font:   "Inter Variable 12.25";
 
   bg0     : #161616;
   bg1     : #262626;
@@ -61,12 +61,12 @@ icon-search {
 }
 
 textbox {
-  padding          : 4px 8px;
+  padding          : 8px 8px;
   background-color : @bg2;
 }
 
 listview {
-  padding      : 4px 0px;
+  padding      : 4px 4px;
   lines        : 12;
   columns      : 1;
   scrollbar    : true;
@@ -75,7 +75,7 @@ listview {
 }
 
 element {
-  padding : 4px 8px;
+  padding : 4px 4px;
   spacing : 8px;
 }
 
@@ -111,5 +111,5 @@ element-text {
 scrollbar {
   handle-width : 4px;
   handle-color : @fg2;
-  padding      : 0 4px;
+  padding      : 0 0 0 2px;
 }
