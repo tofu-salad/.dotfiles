@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-
-export TERM=xterm-256color
-
 if command -v nvim > /dev/null;
     then 
         export VISUAL=nvim
@@ -13,6 +10,7 @@ if command -v nvim > /dev/null;
         export EDITOR="$visual"
         export GIT_EDITOR=vim
 fi
+
 
 bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
 bind "set completion-ignore-case on"
@@ -162,10 +160,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+if command -v direnv > /dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
 # Created by `pipx` on 2024-09-24 22:01:28
 export PATH="$PATH:/home/tofu/.local/bin"
 
-
-if test -e "$HOME/.config/nixos"; then
-    eval "$(direnv hook bash)"
-fi
