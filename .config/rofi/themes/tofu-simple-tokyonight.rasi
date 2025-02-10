@@ -1,7 +1,7 @@
 // Thanks to this Repo
 // https://github.com/newmanls/rofi-themes-collection/blob/master/themes/simple-tokyonight.rasi
 * {
-  font:   "Inter Variable 12.25";
+  font:   "Inter Variable 12";
 
   bg0     : #161616;
   bg1     : #262626;
@@ -17,7 +17,7 @@
   magenta : #be95ff;
   cyan    : #3ddbd9;
 
-  accent: @red;
+  accent: @bg2;
   urgent: @yellow;
 
   background-color : transparent;
@@ -36,7 +36,7 @@ window {
   location : center;
   width    : 340px;
 
-  background-color: @bg1;
+  background-color: @bg0;
   border: 1px;
   border-color: @bg3;
   border-radius: 6px;
@@ -92,7 +92,6 @@ element alternate active {
 }
 
 element selected {
-  text-color       : @bg1;
   background-color : @accent;
 }
 
