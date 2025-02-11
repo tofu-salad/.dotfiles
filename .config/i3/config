@@ -1,6 +1,6 @@
 set $mod Mod4
 set $menu "dmenu_run -h 30"
-set $term kitty
+set $term alacritty
 
 set $left h
 set $down j
@@ -128,9 +128,11 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-    status_command i3status
-}
+
+# im using i3 on a vm so no status
+# bar {
+#     status_command i3status
+# }
 
 # Floating Windows
 for_window [class="org.gnome.Nautilus"] floating enable, position center
@@ -141,10 +143,10 @@ for_window [class="Pavucontrol"] floating enable, border normal
 
 
 # Appearance 
-default_border pixel 2
+default_border pixel 0
 # client.focused "#f38ba8ff" "#f38ba8ff" "#f38ba8ff" "#f38ba8ff"
-gaps outer 2
-gaps inner 2
+gaps outer 0
+gaps inner 0
 
-exec --no-startup-id feh --bg-center ~/.config/sway/bgs/small-lucy.png
+exec alacritty
 
