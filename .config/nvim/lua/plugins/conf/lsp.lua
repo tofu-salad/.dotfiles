@@ -2,24 +2,6 @@
 -- Setup neovim lua configuration
 require("neodev").setup()
 
-local custom_format = function()
-	if vim.bo.filetype == "templ" then
-		local bufnr = vim.api.nvim_get_current_buf()
-		local filename = vim.api.nvim_buf_get_name(bufnr)
-		local cmd = "templ fmt " .. vim.fn.shellescape(filename)
-		vim.fn.jobstart(cmd, {
-			on_exit = function()
-				-- reload the buffer only if it's still the current buffer
-				if vim.api.nvim_get_current_buf() == bufnr then
-					vim.cmd("e!")
-				end
-			end,
-		})
-	else
-		vim.cmd("Format")
-	end
-end
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
 	callback = function(event)
@@ -35,7 +17,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- keybinds
 		map("<leader>lr", vim.lsp.buf.rename, "[l]sp [r]ename")
 		map("<leader>la", vim.lsp.buf.code_action, "[l]sp code [a]ction")
-		map("<leader>lf", custom_format, "[l]sp custom [f]ormat")
 
 		map("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
 		map("gr", require("telescope.builtin").lsp_references, "[g]oto [r]eferences")
