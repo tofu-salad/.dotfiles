@@ -20,50 +20,51 @@
 
 * {
     font-family: "Inter Variable", "Font Awesome 6 Free";
-    border: none;
-    border-radius: 0;
     font-size: 1rem;
 }
 
 
 window#waybar {
-    background: rgba(15, 15, 15, 0.98)
+    background: rgba(15, 15, 15, 0.98);
+    transition-property: background-color;
+    transition-duration: .2s;
 }
 
-tooltip {
-    background: @base01;
-    border: 0.5px solid @base04;
-    border-radius: 0.25rem;
-
+window#waybar.hidden {
+    opacity: 0.2;
 }
 
-tooltip label {
-    color: white;
+button {
+    border: none;
+    border-radius: 0;
 }
 
 #workspaces button {
-    padding: 0 0.3125rem;
-    background: transparent;
-    color: white;
-    border-bottom: 0.1875rem solid transparent;
+    padding: 0 5px;
+    background-color: transparent;
+}
+
+#workspaces button:hover {
+    background-color: @base02;
 }
 
 #workspaces button.focused {
-    border-bottom: 0.1rem solid white;
-}
-#workspaces button.active {
-    border-bottom: 0.1875rem solid white;
+    box-shadow: inset 0 -2px @base06;
 }
 
-#mode,
-#clock,
-#battery {
-    padding: 0 0.625rem;
+#workspaces button.urgent {
+    background-color: @base10;
 }
 
 #mode {
-    background: #64727D;
-    border-bottom: 0.1875rem solid white;
+    background-color: @base09;
+    color: @base06;
+    padding: 0 5px;
+}
+
+#clock,
+#battery {
+    padding: 0 0.625rem;
 }
 
 #battery {
@@ -127,7 +128,6 @@ tooltip label {
 #custom-media,
 #window,
 #tray,
-#mode,
 #idle_inhibitor,
 #scratchpad,
 #language,
