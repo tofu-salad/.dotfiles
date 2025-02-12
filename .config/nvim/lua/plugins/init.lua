@@ -1,6 +1,5 @@
 return {
 	-- Git plugins
-	require("plugins.conf.themes"),
 	{
 		-- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
@@ -9,12 +8,12 @@ return {
 		end,
 	},
 	{
-		"NvChad/nvim-colorizer.lua",
+		"tpope/vim-fugitive",
 		config = function()
-			require("plugins.conf.colorizer")
+			vim.keymap.set("n", "<leader>g", "<cmd>Git<CR>")
+			vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<CR>")
 		end,
 	},
-	"tpope/vim-fugitive",
 	"tpope/vim-sleuth",
 	-- LSP
 	{
@@ -61,25 +60,6 @@ return {
 			require("plugins.conf.completion")
 		end,
 	},
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	event = "InsertEnter",
-	-- 	dependencies = {
-	-- 		-- Snippet Engine & its associated nvim-cmp source
-	-- 		"L3MON4D3/LuaSnip",
-	-- 		"saadparwaiz1/cmp_luasnip",
-	-- 		-- Adds LSP completion capabilities
-	-- 		"hrsh7th/cmp-nvim-lsp",
-	-- 		"hrsh7th/cmp-path",
-	-- 		"hrsh7th/cmp-nvim-lua",
-	-- 		"hrsh7th/cmp-cmdline",
-	-- 		"hrsh7th/cmp-buffer",
-	-- 	},
-	-- 	config = function()
-	-- 		require("plugins.conf.cmp")
-	-- 	end,
-	-- },
-
 	-- Highlight, edit, and navigate code
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -124,9 +104,16 @@ return {
 	},
 	{
 		"ThePrimeagen/harpoon",
-		keys = { "<leader>h" },
+		keys = { "<leader>h", "<C-h>" },
 		config = function()
 			require("plugins.conf.harpoon")
 		end,
 	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		config = function()
+			require("plugins.conf.colorizer")
+		end,
+	},
+	require("plugins.conf.themes"),
 }
