@@ -1,0 +1,31 @@
+UXTerm*faceName: IosevkaTerm Nerd Font Mono
+UXTerm*faceSize: 12
+UXTerm*renderFont: true
+UXTerm*allowBoldFonts: true
+UXTerm*wideChars: true
+UXTerm*utf8: true
+UXTerm*faceNameDoublesize: IosevkaTerm Nerd Font Mono
+
+UXTerm*foreground: #ffffff
+UXTerm*background: #161616
+! Normal colors
+UXTerm*color0:     #262626
+UXTerm*color1:     #ee5396
+UXTerm*color2:     #42be65
+UXTerm*color3:     #ffe97b
+UXTerm*color4:     #78a9ff
+UXTerm*color5:     #be95ff
+UXTerm*color6:     #3ddbd9
+UXTerm*color7:     #dde1e6
+! Bright colors
+UXTerm*color8:     #393939
+UXTerm*color9:     #ee5396
+UXTerm*color10:    #42be65
+UXTerm*color11:    #ffe97b
+UXTerm*color12:    #33b1ff
+UXTerm*color13:    #ff8eb6
+UXTerm*color14:    #3ddbd9
+
+UXTerm*VT100.translations: #override \n\
+    Shift Ctrl <Key>C: copy-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key>V: insert-selection(CLIPBOARD)
