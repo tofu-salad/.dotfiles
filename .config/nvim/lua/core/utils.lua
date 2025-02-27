@@ -1,13 +1,15 @@
 local M = {}
 
 function M.detect_nixos()
-	local file = io.open("/etc/nixos", "r")
+	local file = io.open("/etc/os-release", "r")
 	if file then
+		local content = file:read("*all")
 		file:close()
-		return true
-	else
-		return false
+		if content:match("ID=nixos") then
+			return true
+		end
 	end
+	return false
 end
 
 M.base16 = {

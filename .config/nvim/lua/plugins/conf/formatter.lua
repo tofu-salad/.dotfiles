@@ -11,6 +11,7 @@ require("conform").setup({
 		typescriptreact = { "prettierd", "prettier" },
 		rust = { "rustfmt" },
 		nix = { "nixfmt" },
+		sh = { "shfmt" },
 		sql = { "sql_formatter" },
 	},
 	default_format_opts = {
