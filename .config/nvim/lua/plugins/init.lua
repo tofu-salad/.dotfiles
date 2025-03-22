@@ -96,7 +96,7 @@ return {
 		config = function()
 			require("mini.ai").setup()
 			-- Status Line
-			require("plugins.conf.statusline")
+			-- require("plugins.conf.statusline")
 
 			-- Comment
 			require("plugins.conf.comment")
