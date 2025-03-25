@@ -1,7 +1,7 @@
 return {
-	-- Git plugins
+	-- git plugins
 	{
-		-- Adds git related signs to the gutter, as well as utilities for managing changes
+		-- adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("plugins.conf.gitsigns")
@@ -12,10 +12,11 @@ return {
 		config = function()
 			vim.keymap.set("n", "<leader>g", "<cmd>Git<CR>")
 			vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<CR>")
+			vim.keymap.set("n", "<leader>gm", "<cmd>Git mergetool<CR>")
 		end,
 	},
 	"tpope/vim-sleuth",
-	-- LSP
+	-- lsp
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -38,7 +39,7 @@ return {
 			},
 		},
 	},
-	-- Format and Lint
+	-- format and lint
 	{
 		"stevearc/conform.nvim",
 		config = function()
@@ -51,7 +52,7 @@ return {
 			require("plugins.conf.nvim-lint")
 		end,
 	},
-	-- Autocompletion
+	-- autocompletion
 	{
 		"saghen/blink.cmp",
 		dependencies = "rafamadriz/friendly-snippets",
@@ -60,7 +61,7 @@ return {
 			require("plugins.conf.completion")
 		end,
 	},
-	-- Highlight, edit, and navigate code
+	-- highlight, edit, and navigate code
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -91,20 +92,8 @@ return {
 		end,
 	},
 	{
-		"echasnovski/mini.nvim",
-		version = "*",
-		config = function()
-			require("mini.ai").setup()
-			-- Status Line
-			-- require("plugins.conf.statusline")
-
-			-- Comment
-			require("plugins.conf.comment")
-		end,
-	},
-	{
 		"ThePrimeagen/harpoon",
-		keys = { "<leader>h", "<C-h>" },
+		keys = { "<leader>h" },
 		config = function()
 			require("plugins.conf.harpoon")
 		end,
@@ -113,6 +102,40 @@ return {
 		"NvChad/nvim-colorizer.lua",
 		config = function()
 			require("plugins.conf.colorizer")
+		end,
+	},
+	{
+		"echasnovski/mini.statusline",
+		priority = 1000,
+		config = function()
+			vim.opt.laststatus = 3
+			local active = function()
+				-- *This* is the place that gets adjusted
+				local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 100 })
+				local git = MiniStatusline.section_git({ trunc_width = 40 })
+				local diff = MiniStatusline.section_diff({ trunc_width = 75 })
+				local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
+				local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
+				local filename = MiniStatusline.section_filename({ trunc_width = 140 })
+				local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
+				local location = MiniStatusline.section_location({ trunc_width = 75 })
+				local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
+
+				return MiniStatusline.combine_groups({
+					{ hl = mode_hl, strings = { mode } },
+					{ hl = "NONE", strings = { git, diff, diagnostics, lsp } },
+					"%<", -- Mark general truncate point
+					"%=",
+					{ hl = "NONE", strings = { filename } },
+					"%=", -- End left alignment
+					{ hl = "NONE", strings = { fileinfo } },
+					{ hl = "NONE", strings = { search, "%P" } },
+				})
+			end
+
+			require("mini.statusline").setup({
+				content = { active = active },
+			})
 		end,
 	},
 	require("plugins.conf.themes"),

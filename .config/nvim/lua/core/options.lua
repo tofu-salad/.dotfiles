@@ -1,3 +1,8 @@
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 4
+
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.colorcolumn = "80"
@@ -9,11 +14,9 @@ vim.opt.undofile = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- mnable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = "a"
 
--- don't show the mode, since it's already in status line
-vim.opt.showmode = false
+vim.opt.showmode = true
 
 -- Enable break indent
 vim.opt.breakindent = true

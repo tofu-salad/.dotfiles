@@ -8,10 +8,9 @@ blink_cmp.setup({
 			end,
 		},
 	},
-	sources = {
-		cmdline = {},
+	cmdline = {
+		enabled = false,
 	},
-
 	appearance = {
 		-- kind_icons = {
 		-- Text = "[text]",

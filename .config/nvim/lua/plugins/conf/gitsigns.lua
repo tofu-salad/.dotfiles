@@ -1,5 +1,5 @@
 require("gitsigns").setup({
-	-- See `:help gitsigns.txt`
+	-- see `:help gitsigns.txt`
 	signs = {
 		add = { text = "+" },
 		change = { text = "~" },

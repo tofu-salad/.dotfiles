@@ -1,10 +1,18 @@
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
+-- typescript comments
+local get_option = vim.filetype.get_option
+
+vim.filetype.get_option = function(filetype, option)
+	return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+		or get_option(filetype, option)
+end
+
+require("ts_context_commentstring").setup({
+	enable_autocmd = false,
+})
+
 require("nvim-treesitter.configs").setup({
-	-- Add languages to be installed here that you want installed for treesitter
 	ensure_installed = { "go", "lua", "python", "rust", "tsx", "javascript", "typescript", "vimdoc", "vim" },
 
-	-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
 	auto_install = true,
 
 	highlight = {

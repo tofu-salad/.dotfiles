@@ -1,5 +1,3 @@
--- [[ Configure LSP ]]
--- Setup neovim lua configuration
 require("neodev").setup()
 
 vim.api.nvim_create_autocmd("LspAttach", {
