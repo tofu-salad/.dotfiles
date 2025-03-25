@@ -28,5 +28,6 @@ vim.keymap.set("n", "<leader>fd", require("telescope.builtin").diagnostics, { de
 vim.keymap.set("n", "<leader>ec", function()
 	require("telescope.builtin").find_files({
 		cwd = vim.fn.stdpath("config"),
+		follow = true,
 	})
 end, { desc = "[e]dit [c]onfig" })

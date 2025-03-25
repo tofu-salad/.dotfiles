@@ -12,6 +12,10 @@ vim.keymap.set("n", "<leader>d", '[["_d]]')
 vim.keymap.set("x", "<leader>p", '[["_dP')
 vim.keymap.set("n", "<leader>e", "<cmd> Explore <CR>", { desc = "open netrw" })
 
+-- quicklist
+vim.keymap.set("n", "[c", "<Cmd>cp<CR>", { desc = "go to previous quicklist item '[c'" })
+vim.keymap.set("n", "]c", "<Cmd>cn<CR>", { desc = "go to next quicklist item ']c'" })
+
 -- diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previos diagnostic message '[d'" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next diagnostic message ']d'" })
