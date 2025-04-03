@@ -1,6 +1,6 @@
-require("core")
+require("core.keymaps")
 
--- Bootstrap lazy.nvim
+-- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -18,3 +18,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ spec = { { import = "plugins" } } })
+
+require("core.netrw")
+require("core.options")
+require("core.autocmds")
+require("core.filetypes")
+require("core.lsp")

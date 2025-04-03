@@ -1,5 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.g.mapleader = " " -- <space>
@@ -13,8 +11,8 @@ vim.keymap.set("x", "<leader>p", '[["_dP')
 vim.keymap.set("n", "<leader>e", "<cmd> Explore <CR>", { desc = "open netrw" })
 
 -- quicklist
-vim.keymap.set("n", "[c", "<Cmd>cp<CR>", { desc = "go to previous quicklist item '[c'" })
-vim.keymap.set("n", "]c", "<Cmd>cn<CR>", { desc = "go to next quicklist item ']c'" })
+vim.keymap.set("n", "]q", "<Cmd>cn<CR>", { desc = "go to next quicklist item ']c'" })
+vim.keymap.set("n", "[q", "<Cmd>cp<CR>", { desc = "go to previous quicklist item '[c'" })
 
 -- diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previos diagnostic message '[d'" })
