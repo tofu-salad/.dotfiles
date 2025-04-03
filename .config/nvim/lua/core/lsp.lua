@@ -37,7 +37,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.config("*", {
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
-	root_markers = { ".git" },
 })
 
 vim.lsp.enable({ "lua_ls", "rust_analyzer", "nixd", "cssls", "gopls" })

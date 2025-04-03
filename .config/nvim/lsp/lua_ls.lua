@@ -6,6 +6,7 @@ local root_files = {
 	"stylua.toml",
 	"selene.toml",
 	"selene.yml",
+	".git",
 }
 
 return {
