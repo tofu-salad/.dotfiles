@@ -8,11 +8,11 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move text up in visual mo
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text down in viaul mode [K]" })
 vim.keymap.set("n", "<leader>d", '[["_d]]')
 vim.keymap.set("x", "<leader>p", '[["_dP')
-vim.keymap.set("n", "<leader>e", "<cmd> Explore <CR>", { desc = "open netrw" })
+vim.keymap.set("n", "<leader>e", "<cmd>Explore<CR>", { desc = "open netrw" })
 
 -- quicklist
-vim.keymap.set("n", "]q", "<Cmd>cn<CR>", { desc = "go to next quicklist item ']c'" })
-vim.keymap.set("n", "[q", "<Cmd>cp<CR>", { desc = "go to previous quicklist item '[c'" })
+vim.keymap.set("n", "]q", "<Cmd>cn<CR>", { desc = "go to next quicklist item ']q'" })
+vim.keymap.set("n", "[q", "<Cmd>cp<CR>", { desc = "go to previous quicklist item '[q'" })
 
 -- diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previos diagnostic message '[d'" })
