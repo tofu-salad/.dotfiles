@@ -141,3 +141,7 @@ button {
     padding-right: 0.25rem;
     color: #ffffff;
 }
+
+#mpris {
+    font-size: 0.85rem;
+}

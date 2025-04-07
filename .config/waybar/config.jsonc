@@ -9,6 +9,7 @@
     "sway/mode"
   ],
   "modules-center": [
+    "mpris"
   ],
   "modules-right": [
     "hyprland/language",
@@ -22,6 +23,19 @@
     "network",
     "tray"
   ],
+  "mpris": {
+      "format": "{player_icon}  {status_icon}{dynamic}",
+    "dynamic-len" : 20,
+	"format-paused": "{status_icon} <i>{dynamic}</i>",
+    "dynamic-order": ["title", "artist", "album"],
+	"player-icons": {
+		"default": ""
+	},
+	"status-icons": {
+		"paused": "",
+	},
+	"ignored-players": ["firefox"]
+  },
   "sway/language": {
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
   },
