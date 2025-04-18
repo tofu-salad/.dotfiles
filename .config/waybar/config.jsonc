@@ -34,7 +34,7 @@
 	"status-icons": {
 		"paused": "",
 	},
-	"ignored-players": ["firefox"]
+	"ignored-players": ["firefox", "chromium"]
   },
   "sway/language": {
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
