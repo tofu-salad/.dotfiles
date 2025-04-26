@@ -209,6 +209,6 @@
   },
   "custom/chrome": {
     "format": " ",
-    "on-click": "google-chrome-stable"
+    "on-click": "env LANGUAGE=es_ES google-chrome-stable"
   }
 }
