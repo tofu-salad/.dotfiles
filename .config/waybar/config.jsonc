@@ -6,7 +6,8 @@
     // "custom/search",
     "hyprland/workspaces",
     "sway/workspaces",
-    "sway/mode"
+    "sway/mode",
+    "custom/chrome"
   ],
   "modules-center": [
     "mpris"
@@ -205,5 +206,9 @@
     "format": "󰀻",
     "tooltip-format": "search for apps",
     "on-click": "rofi -show drun -show-icons"
+  },
+  "custom/chrome": {
+    "format": " ",
+    "on-click": "google-chrome-stable"
   }
 }
