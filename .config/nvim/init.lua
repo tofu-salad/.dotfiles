@@ -23,4 +23,3 @@ require("core.options")
 require("core.autocmds")
 require("core.filetypes")
 require("core.lsp")
-

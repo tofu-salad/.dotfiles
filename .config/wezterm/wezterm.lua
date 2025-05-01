@@ -14,13 +14,13 @@ end
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "carbonfox"
-config.color_scheme = 'Oxocarbon Dark (Gogh)'
+config.color_scheme = "Oxocarbon Dark (Gogh)"
 -- config.text_background_opacity = 0
 -- config.window_background_opacity = 0
 config.enable_tab_bar = false
 config.enable_wayland = true
 config.font_size = 10
-config.window_close_confirmation = 'NeverPrompt'
+config.window_close_confirmation = "NeverPrompt"
 local dimmer = { brightness = 0.008 }
 config.background = {
 	-- This is the deepest/back-most layer. It will be rendered first
