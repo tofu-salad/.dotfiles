@@ -1,3 +1,4 @@
+vim.api.nvim_exec("lang en_US.UTF-8", true)
 -- vim.opt.expandtab = true
 -- vim.opt.tabstop = 4
 -- vim.opt.shiftwidth = 4
