@@ -3,11 +3,10 @@
   "height": 25,
   "spacing": 2,
   "modules-left": [
-    // "custom/search",
+    "custom/search",
     "hyprland/workspaces",
     "sway/workspaces",
     "sway/mode",
-    "custom/chrome"
   ],
   "modules-center": [
     "mpris"
@@ -207,8 +206,4 @@
     "tooltip-format": "search for apps",
     "on-click": "rofi -show drun -show-icons"
   },
-  "custom/chrome": {
-    "format": " ",
-    "on-click": "env LANGUAGE=es_ES google-chrome-stable"
-  }
 }
