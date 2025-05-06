@@ -1,10 +1,26 @@
 require("conform").setup({
+	formatters = {
+		prettierd = {
+			prepend_args = function(_, ctx)
+				if ctx.filename:match("%.jsonc?$") then
+					return { "--trailing-comma=none" }
+				end
+			end,
+		},
+		prettier = {
+			prepend_args = function(_, ctx)
+				if ctx.filename:match("%.jsonc?$") then
+					return { "--trailing-comma=none" }
+				end
+			end,
+		},
+	},
 	formatters_by_ft = {
 		lua = { "stylua" },
 		javascript = { "prettierd", "prettier" },
 		html = { "prettierd", "prettier" },
-		json = { "prettierd", "prettier" },
-		jsonc = { "jq", "prettierd" },
+		json = { "prettierd", "prettier", "jq" },
+		jsonc = { "prettierd", "jq" },
 		gotmpl = { "prettierd", "prettier" },
 		javascriptreact = { "prettierd", "prettier" },
 		typescript = { "prettierd", "prettier" },

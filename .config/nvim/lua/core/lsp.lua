@@ -39,4 +39,4 @@ vim.lsp.config("*", {
 	capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable({ "lua_ls", "rust_analyzer", "nixd", "cssls", "gopls", "ts_ls", "html", "svelte", "tailwindcss" })
+vim.lsp.enable({ "lua_ls", "rust_analyzer", "nixd", "cssls", "gopls", "ts_ls", "html", "svelte", "tailwindcss", "clangd" })
