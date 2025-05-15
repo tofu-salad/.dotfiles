@@ -144,8 +144,8 @@ configuration {
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
-  drun-exec-command: "uwsm app -- {cmd}";           /* Added to use uwsm */
-  run-command: "uwsm app -- {cmd}";
+/*	drun-exec-command: "uwsm app -- {cmd}";*/
+/*	run-command: "uwsm app -- {cmd}"; */
   timeout {
       action: "kb-cancel";
       delay:  0;
