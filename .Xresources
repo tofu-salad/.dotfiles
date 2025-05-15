@@ -29,3 +29,6 @@ UXTerm*color14:    #3ddbd9
 UXTerm*VT100.translations: #override \n\
     Shift Ctrl <Key>C: copy-selection(CLIPBOARD) \n\
     Shift Ctrl <Key>V: insert-selection(CLIPBOARD)
+
+Xcursor.theme: Adwaita
+Xcursor.size: 24
