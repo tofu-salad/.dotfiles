@@ -135,8 +135,6 @@ if [ -d "${HOME}/.local/bin" ]; then
 fi
 # }}}
 
-export TERM=xterm-256color
-
 if command -v nvim >/dev/null; then
     export VISUAL=nvim
     export EDITOR=nvim
