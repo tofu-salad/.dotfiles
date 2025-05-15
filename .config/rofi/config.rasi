@@ -9,7 +9,6 @@ configuration {
 /*	terminal: "rofi-sensible-terminal";*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host} [-p {port}]";*/
-/*	run-command: "{cmd}";*/
 /*	run-list-command: "";*/
 /*	run-shell-command: "{terminal} -e {cmd}";*/
 /*	window-command: "wmctrl -i -R {window}";*/
@@ -145,6 +144,8 @@ configuration {
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
+  drun-exec-command: "uwsm app -- {cmd}";           /* Added to use uwsm */
+  run-command: "uwsm app -- {cmd}";
   timeout {
       action: "kb-cancel";
       delay:  0;
@@ -155,4 +156,4 @@ configuration {
   }
 }
 
-@theme "./themes/tofu-simple-tokyonight.rasi"
+@theme "./themes/tofu-simple.rasi"
