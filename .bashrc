@@ -145,7 +145,10 @@ else
     export GIT_EDITOR=vim
 fi
 
-bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
+if [[ "$TERM_PROGRAM" != "WezTerm" ]]; then
+  bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
+fi
+
 bind 'set completion-ignore-case on'
 
 # if not running interactively, don't do anything
