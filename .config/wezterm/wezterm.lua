@@ -21,6 +21,7 @@ config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 config.tab_and_split_indices_are_zero_based = true
 config.hide_tab_bar_if_only_one_tab = true
+config.window_close_confirmation = 'NeverPrompt'
 
 local function tab_title(tab_info)
 	local title = tab_info.tab_title
@@ -114,5 +115,12 @@ wezterm.on("update-right-status", function(window, pane)
 		})
 	end
 end)
+
+config.unix_domains = {
+  {
+    name = 'unix',
+  },
+}
+config.default_gui_startup_args = { 'connect', 'unix' }
 
 return config
