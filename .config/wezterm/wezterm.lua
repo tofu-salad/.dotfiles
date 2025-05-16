@@ -69,6 +69,13 @@ config.keys = {
 	{ key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 	{ key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
 	{
+		key = "s",
+		mods = "LEADER",
+		action = act.ShowLauncherArgs({
+			flags = "FUZZY|WORKSPACES",
+		}),
+	},
+	{
 		key = "t",
 		mods = "CTRL",
 		action = wezterm.action_callback(function(window, pane)
