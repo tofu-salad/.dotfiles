@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # aliases {{{
 alias shutdown='systemctl poweroff'
 alias reboot='systemctl reboot'
