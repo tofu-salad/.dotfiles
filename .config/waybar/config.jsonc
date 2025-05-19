@@ -71,7 +71,7 @@
     "format-icons": ["", "", "", "", ""]
   },
   "network": {
-    "on-click": "ghostty --window-width=80  --window-height=20 --title=nmtui -e nmtui",
+    "on-click": "foot -T foot.nmtui nmtui",
     "format-wifi": "",
     "format-ethernet": "󰲝",
     "tooltip-format": "{ifname} via {gwaddr} 󰲝",
