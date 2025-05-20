@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 2cd740a..da24261 100644
+index 2cd740a..d1a4c2f 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -7,7 +7,7 @@ index 2cd740a..da24261 100644
   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
   */
 -static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-+static char *font = "IosevkaTerm Nerd Font Mono:pixelsize=12:antialias=true:autohint=true";
++static char *font = "IosevkaTerm Nerd Font Mono:size=12:antialias=true:autohint=true";
  static int borderpx = 2;
  
  /*
@@ -53,21 +53,22 @@ index 2cd740a..da24261 100644
  	[255] = 0,
  
  	/* more colors can be added after 255 to use with DefaultXX */
- 	"#cccccc",
+-	"#cccccc",
++	"#ffffff",
  	"#555555",
 -	"gray90", /* default foreground colour */
 -	"black", /* default background colour */
 +	"#ffffff", /* default foreground colour */
-+	"#262626", /* default background colour */
++	"#161616", /* default background colour */
  };
  
  
-@@ -155,7 +155,7 @@ static unsigned int rows = 24;
-  */
- static unsigned int mouseshape = XC_xterm;
- static unsigned int mousefg = 7;
--static unsigned int mousebg = 0;
-+static unsigned int mousebg = 7;
+@@ -132,7 +132,7 @@ static const char *colorname[] = {
+ unsigned int defaultfg = 258;
+ unsigned int defaultbg = 259;
+ unsigned int defaultcs = 256;
+-static unsigned int defaultrcs = 257;
++static unsigned int defaultrcs = 256;
  
  /*
-  * Color used to display font attributes when fontconfig selected a font which
+  * Default shape of cursor

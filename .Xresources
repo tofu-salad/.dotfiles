@@ -1,19 +1,1 @@
 st.font: IosevkaTerm Nerd Font Mono:size=12:antialias=true:autohint=true
-st.color0: #262626
-st.color1: #ee5396
-st.color2: #42be65
-st.color3: #ffe97b
-st.color4: #78a9ff
-st.color5: #be95ff
-st.color6: #3ddbd9
-st.color7: #dde1e6
-st.color8: #393939
-st.color9: #ee5396
-st.color10: #42be65
-st.color11: #ffe97b 
-st.color12: #33b1ff
-st.color13: #ff8eb6
-st.color14: #3ddbd9
-st.color15: #ffffff
-st.background: #ffffff
-st.cursorStyle: 2
