@@ -1,5 +1,5 @@
 diff --git a/config.def.h b/config.def.h
-index 2cd740a..d1a4c2f 100644
+index 2cd740a..73c17f1 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -5,7 +5,7 @@
@@ -59,7 +59,7 @@ index 2cd740a..d1a4c2f 100644
 -	"gray90", /* default foreground colour */
 -	"black", /* default background colour */
 +	"#ffffff", /* default foreground colour */
-+	"#161616", /* default background colour */
++	"#131313", /* default background colour */
  };
  
  
