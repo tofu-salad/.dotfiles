@@ -1,12 +1,11 @@
 set $mod Mod4
 set $menu "dmenu_run"
-set $term alacritty
+set $term uxterm
 
 set $left h
 set $down j
 set $up k
 set $right l
-font pango:Inter, Bold 10
 
 floating_modifier $mod
 
@@ -131,5 +130,4 @@ default_border pixel 0
 gaps outer 0
 gaps inner 0
 
-exec alacritty
-
+exec uxterm
