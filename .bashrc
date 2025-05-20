@@ -144,7 +144,7 @@ else
 fi
 
 if [[ "$TERM_PROGRAM" != "WezTerm" ]]; then
-  bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
+    bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
 fi
 
 bind 'set completion-ignore-case on'
