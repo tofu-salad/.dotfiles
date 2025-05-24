@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 NGINX_SERVICE_NAME="nginx"
-OBS_EXEC="obs --startstreaming"
+OBS_EXEC="obs"
 OUTPUT="rtmp://127.0.0.1/feed/live"
 
 is_nginx_running() {
@@ -52,7 +52,7 @@ else
 fi
 
 echo "launching OBS"
-"$OBS_EXEC" &
+"$OBS_EXEC" --startstreaming &
 OBS_PID=$!
 
 echo "waiting 10 seconds for OBS to establish stream..."
