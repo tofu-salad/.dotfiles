@@ -33,7 +33,15 @@ trap 'echo "script interrupted. cleaning up..."; stop_nginx; exit' INT TERM
 trap 'echo "script finished. cleaning up..."; stop_nginx' EXIT
 
 echo "searching for Chromecast..."
-CHROMECAST_IP=$(avahi-browse -rt _googlecast._tcp | awk '/= .*_googlecast/ {found=1} found && /address =/ {gsub(/[ \[\]]/, "", $3); print $3; exit}')
+
+CHROMECAST_IP=$(avahi-browse -rt _googlecast._tcp | awk '
+/^= / { in_chromecast = 0 }
+/Chromecast/ { in_chromecast = 1 }
+/address/ && in_chromecast {
+  gsub(/[ \[\]]/, "", $3);
+  print $3;
+  exit
+}')
 
 if [ -z "$CHROMECAST_IP" ]; then
     echo "error: Chromecast not found. please ensure it's on the same network."
