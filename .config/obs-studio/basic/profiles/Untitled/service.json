@@ -1,0 +1,1 @@
+{"type":"rtmp_custom","settings":{"server":"rtmp://127.0.0.1/feed","use_auth":false,"bwtest":false,"key":"live"}}
