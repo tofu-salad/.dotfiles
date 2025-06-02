@@ -10,6 +10,7 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "custom/tailscale",
     "hyprland/language",
     "sway/language",
     "pulseaudio",
@@ -39,7 +40,10 @@
   "sway/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
-    "format-icons": ["", ""],
+    "format-icons": [
+      "",
+      ""
+    ],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
   },
@@ -53,11 +57,25 @@
   "temperature": {
     "critical-threshold": 80,
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
   },
   "backlight": {
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "battery": {
     "states": {
@@ -68,7 +86,13 @@
     "format-charging": "{capacity}% ",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "network": {
     "on-click": "foot -T foot.nmtui nmtui",
@@ -84,11 +108,16 @@
     "tooltip-format": "{volume}% - {desc}",
     "format-muted": "<span color='#ee5396'></span>",
     "format-icons": {
-      "default": ["", ""]
+      "default": [
+        "",
+        ""
+      ]
     },
     "scroll-step": 5,
     "on-click": "pwvucontrol",
-    "ignored-sinks": ["Easy Effects Sink"]
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
   },
   "sway/window": {
     "max-length": 25
@@ -128,5 +157,14 @@
     "format": "󰀻",
     "tooltip-format": "search for apps",
     "on-click": "rofi -show drun -show-icons"
+  },
+  "custom/tailscale": {
+    "exec": "~/.config/waybar/scripts/tailscale.sh",
+    "on-click": "~/.config/waybar/scripts/tailscale.sh --toggle",
+    "interval": 30,
+    "return-type": "json",
+    "format": "{}",
+    "hide-empty-text": false,
+    "signal": 9
   }
 }
