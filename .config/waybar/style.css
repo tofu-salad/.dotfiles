@@ -1,4 +1,3 @@
-
 @define-color base00 rgba(22, 22, 22, 1);   /* #161616 */
 @define-color base01 rgba(38, 38, 38, 1);   /* #262626 */
 @define-color base02 rgba(57, 57, 57, 1);   /* #393939 */
@@ -71,25 +70,25 @@ button {
 }
 
 #battery {
-    background-color: #ffffff;
-    color: black;
+    background-color: @base06;
+    color: @base00;
 }
 
 #battery.charging {
-    color: white;
-    background-color: #26A65B;
+    color: @base06;
+    background-color: @base13;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: black;
+        background-color: @base06;
+        color: @base00;
     }
 }
 
 #battery.warning:not(.charging) {
-    background: #f53c3c;
-    color: white;
+    background: @base10;
+    color: @base06;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -99,7 +98,7 @@ button {
 
 /* If custom-search is the leftmost module, add left margin */
 .modules-left>widget:first-child>#custom-search {
-    color: white;
+    color: @base06;
     margin: 0 0.4rem;
 }
 
@@ -139,9 +138,17 @@ button {
     margin: 0.125rem;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-    color: #ffffff;
+    color: @base06;
 }
 
 #mpris {
     font-size: 0.85rem;
+}
+
+#custom-tailscale.connected {
+    color: @base06;
+}
+
+#custom-tailscale.disconnected {
+    color: @base04;
 }
