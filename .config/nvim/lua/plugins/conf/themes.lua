@@ -1,11 +1,32 @@
 return {
 	{
+		"datsfilipe/vesper.nvim",
+		config = function()
+			require("vesper").setup({
+				transparent = false, -- Boolean: Sets the background to transparent
+				italics = {
+					comments = true, -- Boolean: Italicizes comments
+					keywords = false, -- Boolean: Italicizes keywords
+					functions = false, -- Boolean: Italicizes functions
+					strings = false, -- Boolean: Italicizes strings
+					variables = false, -- Boolean: Italicizes variables
+				},
+				overrides = {
+				}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+				palette_overrides = {
+					bg = "#161616"
+				},
+			})
+			vim.cmd.colorscheme("vesper")
+		end,
+	},
+	{
 		"nyoom-engineering/oxocarbon.nvim",
 		config = function()
 			local oxocarbon = require("core.utils").base16.oxocarbon.dark
 
 			vim.opt.background = "dark"
-			vim.cmd.colorscheme("oxocarbon")
+			-- vim.cmd.colorscheme("oxocarbon")
 
 			-- Telescope fix
 			vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = oxocarbon.base02, bg = oxocarbon.blend })
