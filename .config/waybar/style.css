@@ -143,8 +143,16 @@ button {
     font-size: 0.85rem;
 }
 
+#custom-tailscale.disconnected:hover {
+    color: @blue-40;
+}
+
 #custom-tailscale.connected {
     color: @fg;
+}
+
+#custom-tailscale.connected:hover {
+    color: @magenta-50;
 }
 
 #custom-tailscale.disconnected {
