@@ -1,7 +1,8 @@
 {
-  "layer": "top",
-  "height": 25,
-  "spacing": 2,
+  "layer": "bot",
+  "spacing": 0,
+  "position": "top",
+  "height": 0,
   "modules-left": [
     "custom/search",
     "hyprland/workspaces",
@@ -15,12 +16,13 @@
     "sway/language",
     "pulseaudio",
     "battery",
-    "clock",
+    "tray",
     "network",
-    "tray"
+    "clock"
   ],
   "sway/language": {
-    "on-click": "swaymsg input type:keyboard xkb_switch_layout next"
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    "tooltip": false
   },
   "hyprland/language": {
     "on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
@@ -154,9 +156,9 @@
     "format": "{usage}%  "
   },
   "custom/search": {
-    "format": "󰀻",
-    "tooltip-format": "search for apps",
-    "on-click": "rofi -show drun -show-icons"
+    "format": "<span size='10000'>〇</span>",
+    "tooltip": false,
+    "on-click": "pgrep -x rofi > /dev/null && pkill -x rofi || rofi -location 1 -theme-str 'window { y-offset: 2px; x-offset: 2px; }' -show drun -show-icons -run-command 'uwsm app -- {cmd}'"
   },
   "custom/tailscale": {
     "exec": "~/.config/waybar/scripts/tailscale.sh",
