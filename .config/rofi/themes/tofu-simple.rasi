@@ -1,7 +1,7 @@
 // Thanks to this Repo
 // https://github.com/newmanls/rofi-themes-collection/blob/master/themes/simple-tokyonight.rasi
 * {
-  font:   "Inter Variable 12";
+  font:   "Adwaita Sans 12";
 
   bg0        : #161616;
   bg1        : #262626;
