@@ -2,14 +2,15 @@
 @define-color bg01 rgba(38, 38, 38, 1);   /* #262626 */
 @define-color bg02 rgba(57, 57, 57, 1);   /* #393939 */
 @define-color bg03 rgba(82, 82, 82, 1);   /* #525252 */
-@define-color fg rgba(255, 255, 255, 1);/* #ffffff */
+@define-color fg0 rgba(255, 255, 255, 1);/* #ffffff */
 @define-color blue-40  #78a9ff;
 @define-color magenta-50  #ee5396;
 @define-color clear rgba(255, 255, 255, 0); /* #ffffff00 (fully transparent) */
 
 * {
-    font-family: "Inter Variable", "Font Awesome 6 Free";
+    font-family: Adwaita Sans, "Font Awesome 6 Free";
     font-size: 1rem;
+    color: @fg0;
 }
 
 
@@ -45,12 +46,12 @@ button {
 }
 
 #workspaces button.focused {
-    color: @fg;
+    color: @fg0;
     box-shadow: inset 0 -2px @blue-40;
 }
 
 #workspaces button.active {
-    color: @fg;
+    color: @fg0;
     box-shadow: inset 0 -2px @blue-40;
 }
 
@@ -148,7 +149,7 @@ button {
 }
 
 #custom-tailscale.connected {
-    color: @fg;
+    color: @fg0;
 }
 
 #custom-tailscale.connected:hover {
