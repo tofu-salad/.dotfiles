@@ -15,12 +15,8 @@ return {
 	root_markers = root_files,
 	settings = {
 		Lua = {
-			workspace = { checkThirdParty = false },
+			workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
 			telemetry = { enable = false },
-			diagnostics = {
-				disable = { "missing-fields" },
-				globals = { "vim" },
-			},
 		},
 	},
 }
