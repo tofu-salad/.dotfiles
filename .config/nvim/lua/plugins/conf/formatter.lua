@@ -1,18 +1,14 @@
+local function no_trailing_comma_for_json(_, ctx)
+	return ctx.filename:match("%.jsonc?$") and { "--trailing-comma=none" } or {}
+end
+
 require("conform").setup({
 	formatters = {
 		prettierd = {
-			prepend_args = function(_, ctx)
-				if ctx.filename:match("%.jsonc?$") then
-					return { "--trailing-comma=none" }
-				end
-			end,
+			prepend_args = no_trailing_comma_for_json,
 		},
 		prettier = {
-			prepend_args = function(_, ctx)
-				if ctx.filename:match("%.jsonc?$") then
-					return { "--trailing-comma=none" }
-				end
-			end,
+			prepend_args = no_trailing_comma_for_json,
 		},
 	},
 	formatters_by_ft = {

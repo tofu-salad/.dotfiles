@@ -1,5 +1,4 @@
 return {
-	-- format and lint
 	{
 		"stevearc/conform.nvim",
 		config = function()
@@ -14,42 +13,25 @@ return {
 	},
 	{
 		"j-hui/fidget.nvim",
-		opts = {
-			notification = {
-				window = {
-					winblend = 100,
-					zindex = 55,
-				},
-			},
-		},
+		opts = {},
 	},
 	{
-		"datsfilipe/vesper.nvim",
+		"echasnovski/mini.hues",
+		version = "*",
 		config = function()
-			require("vesper").setup({
-				transparent = false, -- Boolean: Sets the background to transparent
-				italics = {
-					comments = true, -- Boolean: Italicizes comments
-					keywords = false, -- Boolean: Italicizes keywords
-					functions = false, -- Boolean: Italicizes functions
-					strings = false, -- Boolean: Italicizes strings
-					variables = false, -- Boolean: Italicizes variables
-				},
-				overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
-				palette_overrides = {
-					bg = "#161616",
-				},
+			require("mini.hues").setup({
+				background = "#161616",
+				foreground = "#ffffff",
 			})
-			vim.cmd.colorscheme("vesper")
 		end,
 	},
-	-- {
-	-- 	"nyoom-engineering/oxocarbon.nvim",
-	-- 	config = function()
-	-- 		-- vim.opt.background = "dark"
-	-- 		-- vim.cmd.colorscheme("oxocarbon")
-	-- 	end,
-	-- },
+	{
+		"catgoose/nvim-colorizer.lua",
+		opts = {
+			filetypes = { "lua", "html", "js", "jsx", "ts", "svelte", "css", "tsx" },
+			tailwind = true,
+		},
+	},
 	{
 		"echasnovski/mini.pick",
 		dependencies = { "echasnovski/mini.extra" },
