@@ -19,7 +19,6 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.winborder = "rounded"
 vim.opt.wrap = false
 
 -- keymaps
@@ -35,8 +34,12 @@ vim.keymap.set("x", "<leader>p", '[["_dP')
 vim.keymap.set("n", "<leader>e", "<cmd>Explore<CR>", { desc = "open netrw" })
 vim.keymap.set("n", "]q", "<Cmd>cn<CR>", { desc = "go to next quicklist item ']q'" })
 vim.keymap.set("n", "[q", "<Cmd>cp<CR>", { desc = "go to previous quicklist item '[q'" })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "go to previos diagnostic message '[d'" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "go to next diagnostic message ']d'" })
+vim.keymap.set("n", "[d", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "go to previos diagnostic message '[d'" })
+vim.keymap.set("n", "]d", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "go to next diagnostic message ']d'" })
 vim.keymap.set("n", "<leader>Q", vim.diagnostic.open_float, { desc = "open floating diagnostic [Q]" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "open diagnostic [q]uickfix list" })
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "move focus to the left window" })
@@ -52,7 +55,14 @@ vim.g.netrw_keepdir = 1
 
 -- lsp
 local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
-local files = vim.fn.readdir(lsp_dir, [[v:val =~ '\.lua$']])
+local all_files = vim.fn.readdir(lsp_dir)
+
+local files = {}
+for _, file in ipairs(all_files) do
+	if file:match("%.lua$") then
+		table.insert(files, file)
+	end
+end
 
 local servers = {}
 for _, file in ipairs(files) do
@@ -80,16 +90,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>la", vim.lsp.buf.code_action, "[l]sp code [a]ction")
 
 		map("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
-		map("gr", function()
-			require("MiniExtra.pickers").lsp({ scope = "references" })
+		map("<leader>gr", function()
+			require("mini.extra").pickers.lsp({ scope = "references" })
 		end, "[g]oto [r]eferences")
 		map("gI", vim.lsp.buf.implementation, "[g]oto [I]mplementation")
 		map("<leader>D", vim.lsp.buf.type_definition, "type [D]efinition")
 		map("<leader>ds", function()
-			require("MiniExtra.pickers").lsp({ scope = "document_symbol" })
+			require("mini.extra").pickers.lsp({ scope = "document_symbol" })
 		end, "[d]ocument [s]ymbols")
 		map("<leader>ws", function()
-			require("MiniExtra.pickers").lsp({ scope = "workspace_symbol" })
+			require("mini.extra").pickers.lsp({ scope = "workspace_symbol" })
 		end, "[w]orkspace [s]ymbols")
 
 		-- see `:help K` for why this keymap
@@ -117,7 +127,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = highlight_group,
 	pattern = "*",
 })
-require("core.filetypes")
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -136,3 +145,4 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ spec = { { import = "plugins" } } })
+require("filetypes")
