@@ -1,6 +1,6 @@
 set $mod Mod4
 set $menu "dmenu_run"
-set $term st
+set $term alacritty
 
 set $left h
 set $down j
@@ -130,4 +130,5 @@ default_border pixel 0
 gaps outer 0
 gaps inner 0
 
-exec st
+exec xrandr --output Virtual-1 --mode 1280x720
+exec $term

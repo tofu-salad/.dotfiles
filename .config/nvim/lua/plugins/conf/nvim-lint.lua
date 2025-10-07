@@ -43,8 +43,8 @@ local function show_linter_info()
 	local buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
 
-	local width = vim.api.nvim_get_option("columns")
-	local height = vim.api.nvim_get_option("lines")
+	local width = vim.api.nvim_get_option_value("columns", {})
+	local height = vim.api.nvim_get_option_value("lines", {})
 
 	local win_width = math.min(60, math.ceil(width * 0.5))
 	local win_height = math.min(#lines + 2, math.ceil(height * 0.3))
@@ -65,8 +65,8 @@ local function show_linter_info()
 
 	local win = vim.api.nvim_open_win(buf, true, opts)
 
-	vim.api.nvim_buf_set_option(buf, "modifiable", false)
-	vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+	vim.api.nvim_set_option_value("modifiable", false, { buf = buf })
+	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
 
 	vim.api.nvim_buf_set_keymap(buf, "n", "q", ":close<CR>", { silent = true, noremap = true })
 	vim.api.nvim_buf_set_keymap(buf, "n", "<Esc>", ":close<CR>", { silent = true, noremap = true })
