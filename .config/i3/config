@@ -1,6 +1,6 @@
 set $mod Mod4
 set $menu "dmenu_run"
-set $term uxterm
+set $term st
 
 set $left h
 set $down j
@@ -130,4 +130,4 @@ default_border pixel 0
 gaps outer 0
 gaps inner 0
 
-exec uxterm
+exec st
