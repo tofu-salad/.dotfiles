@@ -1,5 +1,15 @@
 return {
 	{
+		"echasnovski/mini.hues",
+		version = "*",
+		config = function()
+			require("mini.hues").setup({
+				background = "#161616",
+				foreground = "#ffffff",
+			})
+		end,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "master",
 		lazy = false,

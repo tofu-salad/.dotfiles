@@ -28,7 +28,7 @@ vim.keymap.set("v", "<leader>y", '"+y', { silent = true, desc = "[y]ank to syste
 vim.keymap.set("v", "<", "<gv", { silent = true, desc = "indent left without leaving visual mode [<]" })
 vim.keymap.set("v", ">", ">gv", { silent = true, desc = "indent right without leaving visual mode [>]" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move text up in visual mode [J]" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text down in viaul mode [K]" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "move text down in visual mode [K]" })
 vim.keymap.set("n", "<leader>d", '[["_d]]')
 vim.keymap.set("x", "<leader>p", '[["_dP')
 vim.keymap.set("n", "<leader>e", "<cmd>Explore<CR>", { desc = "open netrw" })
@@ -130,6 +130,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+---@diagnostic disable-next-line: undefined-field
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
