@@ -1,5 +1,15 @@
 return {
 	{
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		config = function()
+			require("plugins.conf.treesitter")
+		end,
+	},
+	{
 		"stevearc/conform.nvim",
 		config = function()
 			require("plugins.conf.formatter")
@@ -14,16 +24,6 @@ return {
 	{
 		"j-hui/fidget.nvim",
 		opts = {},
-	},
-	{
-		"echasnovski/mini.hues",
-		version = "*",
-		config = function()
-			require("mini.hues").setup({
-				background = "#161616",
-				foreground = "#ffffff",
-			})
-		end,
 	},
 	{
 		"catgoose/nvim-colorizer.lua",
