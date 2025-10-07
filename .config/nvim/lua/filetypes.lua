@@ -23,6 +23,7 @@ vim.filetype.add({
 		["~/.config/sway/conf.d/*.conf"] = "swayconfig",
 	},
 })
+
 vim.filetype.add({
 	extension = {
 		templ = "templ",

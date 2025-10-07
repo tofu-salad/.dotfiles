@@ -7,7 +7,7 @@ return {
 		".clang-format",
 		"compile_commands.json",
 		"compile_flags.txt",
-		"configure.ac", 
+		"configure.ac",
 		".git",
 	},
 }

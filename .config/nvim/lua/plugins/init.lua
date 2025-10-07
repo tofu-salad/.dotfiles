@@ -1,45 +1,24 @@
 return {
-	-- git plugins
 	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "+" },
-				change = { text = "~" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-			},
-		},
-	},
-	{
-		"tpope/vim-fugitive",
+		"echasnovski/mini.hues",
+		version = "*",
 		config = function()
-			vim.keymap.set("n", "<leader>ga", "<cmd>Git<CR>")
-			vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<CR>")
-			vim.keymap.set("n", "<leader>gm", "<cmd>Git mergetool<CR>")
-			vim.keymap.set("n", "<leader>gp", "<cmd>Git push<CR>")
+			require("mini.hues").setup({
+				background = "#161616",
+				foreground = "#ffffff",
+			})
 		end,
 	},
-	"tpope/vim-sleuth",
 	{
-		"williamboman/mason.nvim",
-		lazy = true,
-		cmd = "Mason",
-		opts = {},
+		"nvim-treesitter/nvim-treesitter",
+		branch = "master",
+		lazy = false,
+		build = ":TSUpdate",
+		dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
+		config = function()
+			require("plugins.conf.treesitter")
+		end,
 	},
-	{
-		"j-hui/fidget.nvim",
-		opts = {
-			notification = {
-				window = {
-					winblend = 100,
-					zindex = 55,
-				},
-			},
-		},
-	},
-	-- format and lint
 	{
 		"stevearc/conform.nvim",
 		config = function()
@@ -52,63 +31,30 @@ return {
 			require("plugins.conf.nvim-lint")
 		end,
 	},
-	-- autocompletion
 	{
-		"saghen/blink.cmp",
-		dependencies = "rafamadriz/friendly-snippets",
-		version = "*",
-		config = function()
-			require("plugins.conf.completion")
-		end,
+		"j-hui/fidget.nvim",
+		opts = {},
 	},
-	-- highlight, edit, and navigate code
 	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-			"JoosepAlviste/nvim-ts-context-commentstring",
+		"catgoose/nvim-colorizer.lua",
+		opts = {
+			filetypes = { "lua", "html", "js", "jsx", "ts", "svelte", "css", "tsx" },
+			tailwind = true,
 		},
-		build = ":TSUpdate",
-		config = function()
-			require("plugins.conf.treesitter")
-		end,
 	},
 	{
-		"nvim-telescope/telescope.nvim",
-		event = "VeryLazy",
-		branch = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
-				cond = function()
-					return vim.fn.executable("make") == 1
-				end,
-			},
-		},
+		"echasnovski/mini.pick",
+		dependencies = { "echasnovski/mini.extra" },
 		config = function()
-			require("plugins.conf.telescope")
+			require("mini.pick").setup()
+			require("mini.extra").setup()
+			vim.keymap.set("n", "<leader>?", ":Pick help<CR>", { silent = true })
+			vim.keymap.set("n", "<leader><leader>", ":Pick buffers<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>ft", ":Pick git_files<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>fw", ":Pick grep<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>fg", ":Pick grep_live<CR>", { silent = true })
+			vim.keymap.set("n", "<leader>fd", ":Pick diagnostic<CR>", { silent = true })
 		end,
 	},
-	{
-		"ThePrimeagen/harpoon",
-		keys = { "<leader>h" },
-		config = function()
-			require("plugins.conf.harpoon")
-		end,
-	},
-	{
-		"NvChad/nvim-colorizer.lua",
-		config = function()
-			require("plugins.conf.colorizer")
-		end,
-	},
-	{
-		"echasnovski/mini.statusline",
-		config = function()
-			require("plugins.conf.statusline")
-		end,
-	},
-	require("plugins.conf.themes"),
 }
