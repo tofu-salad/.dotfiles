@@ -13,24 +13,9 @@ if [ -x "$(which dircolors)" ]; then
     alias egrep='egrep --color=auto'
 fi
 
-if command -v exa >/dev/null; then
-    alias ll='exa -al --color=always --group-directories-first'
-    alias la='exa -al --color=always'
-    alias l='exa'
-fi
-
 if command -v nvim >/dev/null; then
     alias vim='nvim'
 fi
-
-# nixos specific
-if [[ -f /etc/os-release ]] && grep -q "ID=nixos" /etc/os-release; then
-    alias rebuild-nixos='sudo nixos-rebuild switch --flake $HOME/.config/nixos/#desktop'
-    alias update-nixos='nix flake update --flake $HOME/.config/nixos && sudo nixos-rebuild switch  --flake $HOME/.config/nixos/#desktop'
-else
-    echo "not running NIXOS"
-fi
-
 # }}}
 
 # prompt {{{
