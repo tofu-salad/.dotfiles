@@ -4,12 +4,13 @@
   "position": "top",
   "height": 0,
   "modules-left": [
-    "custom/search",
     "hyprland/workspaces",
     "sway/workspaces",
     "sway/mode"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "clock"
+  ],
   "modules-right": [
     "custom/tailscale",
     "hyprland/language",
@@ -17,8 +18,7 @@
     "pulseaudio",
     "battery",
     "tray",
-    "network",
-    "clock"
+    "network"
   ],
   "sway/language": {
     "on-click": "swaymsg input type:keyboard xkb_switch_layout next",

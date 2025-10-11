@@ -108,7 +108,7 @@ button {
 
 
 /* If network is the rightmost module, add right margin */
-.modules-right>widget:last-child>#clock {
+.modules-right>widget:last-child>#network {
     margin-right: 0.4rem;
 }
 
