@@ -15,4 +15,4 @@ gaps inner 2
 gaps outer 2
 hide_edge_borders smart_no_gaps
 
-output HDMI-A-1 subpixel rgb scale_filter smart resolution 1920x1080@74.973Hz position 0 0 bg ~/Pictures/Wallpapers/gnome-amber.png center #161616
+output * subpixel rgb scale_filter smart resolution 1920x1080@74.973Hz position 0 0 bg ~/Pictures/Wallpapers/gnome-amber.png center #161616
