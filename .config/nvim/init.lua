@@ -1,4 +1,5 @@
 -- options
+vim.opt.termguicolors = true
 vim.opt.breakindent = true
 vim.opt.colorcolumn = "80"
 vim.opt.completeopt:append("noselect")
