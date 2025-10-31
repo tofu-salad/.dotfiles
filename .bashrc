@@ -128,7 +128,7 @@ else
     export GIT_EDITOR=vim
 fi
 
-if [[ "$TERM_PROGRAM" != "WezTerm" || "$TERM_PROGRAM" != "ghostty" ]]; then
+if [[ "$TERM_PROGRAM" != "WezTerm" && "$TERM_PROGRAM" != "ghostty" ]]; then
     bind -x '"\C-t": bash $HOME/.config/scripts/tmux-sessionizer'
 fi
 
