@@ -1,15 +1,5 @@
 return {
 	{
-		"echasnovski/mini.hues",
-		version = "*",
-		config = function()
-			require("mini.hues").setup({
-				background = "#161616",
-				foreground = "#ffffff",
-			})
-		end,
-	},
-	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "master",
 		lazy = false,
@@ -56,5 +46,19 @@ return {
 			vim.keymap.set("n", "<leader>fg", ":Pick grep_live<CR>", { silent = true })
 			vim.keymap.set("n", "<leader>fd", ":Pick diagnostic<CR>", { silent = true })
 		end,
+	},
+	{
+		"jesseleite/nvim-noirbuddy",
+		dependencies = {
+			{ "tjdevries/colorbuddy.nvim" },
+		},
+		lazy = false,
+		priority = 1000,
+		opts = {
+			colors = {
+				background = "#161616",
+			},
+		},
+		install = { colorscheme = { "noirbuddy" } },
 	},
 }
