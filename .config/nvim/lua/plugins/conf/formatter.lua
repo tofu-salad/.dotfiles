@@ -2,6 +2,11 @@ local function no_trailing_comma_for_json(_, ctx)
 	return ctx.filename:match("%.jsonc?$") and { "--trailing-comma=none" } or {}
 end
 
+require("conform").formatters.jq = {
+	inherit = false,
+	command = "jq",
+	args = { "--indent", "4" },
+}
 require("conform").setup({
 	formatters = {
 		prettierd = {

@@ -1,5 +1,6 @@
 quit-after-last-window-closed = false
-theme = "oxocarbon-tofu"
+theme = oxocarbon-tofu
+background = #161616
 font-family = IosevkaTerm NFM
 
 gtk-titlebar = false
