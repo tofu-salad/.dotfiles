@@ -2,6 +2,7 @@ quit-after-last-window-closed = false
 theme = oxocarbon-tofu
 background = #161616
 font-family = IosevkaTerm NFM
+maximize = true
 
 gtk-titlebar = false
 confirm-close-surface = false
@@ -15,13 +16,14 @@ cursor-style-blink = false
 keybind = ctrl+s>c=new_tab
 keybind = ctrl+s>n=next_tab
 keybind = ctrl+s>p=previous_tab
-keybind = ctrl+s>1=goto_tab:1
-keybind = ctrl+s>2=goto_tab:2
-keybind = ctrl+s>3=goto_tab:3
-keybind = ctrl+s>4=goto_tab:4
-keybind = ctrl+s>5=goto_tab:5
-keybind = ctrl+s>6=goto_tab:6
-keybind = ctrl+s>7=goto_tab:7
-keybind = ctrl+s>8=goto_tab:8
+keybind = ctrl+s>0=goto_tab:1
+keybind = ctrl+s>1=goto_tab:2
+keybind = ctrl+s>2=goto_tab:3
+keybind = ctrl+s>3=goto_tab:4
+keybind = ctrl+s>4=goto_tab:5
+keybind = ctrl+s>5=goto_tab:6
+keybind = ctrl+s>6=goto_tab:7
+keybind = ctrl+s>7=goto_tab:8
 keybind = ctrl+s>8=goto_tab:9
+keybind = ctrl+s>9=goto_tab:10
 gtk-custom-css = tab.css
