@@ -1,6 +1,5 @@
 [font]
-normal = { family = "IosevkaTerm NFM" }
-size = 12
+normal = { family = "Adwaita Mono" }
 [window]
 decorations = "None"
 startup_mode = "Maximized"
