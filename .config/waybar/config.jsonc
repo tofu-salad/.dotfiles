@@ -27,43 +27,11 @@
     "hyprland/language": {
         "on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
     },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": [
-            "",
-            ""
-        ],
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
     "tray": {
         "spacing": 10
-    },
-    "memory": {
-        "interval": 10,
-        "format": "{used:0.1f}G/{total:0.1f}G "
-    },
-    "temperature": {
-        "critical-threshold": 80,
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ]
     },
     "battery": {
         "states": {
@@ -83,11 +51,11 @@
         ]
     },
     "network": {
-        "on-click": "foot -T foot.nmtui nmtui",
+        "on-click": "alacritty -T nmtui -e nmtui",
         "format-wifi": "",
-        "format-ethernet": "󰲝",
-        "tooltip-format": "{ifname} via {gwaddr} 󰲝",
-        "format-linked": "{ifname} (No IP) 󰲝",
+        "format-ethernet": "eth",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected "
     },
     "pulseaudio": {
@@ -106,9 +74,6 @@
         "ignored-sinks": [
             "Easy Effects Sink"
         ]
-    },
-    "sway/window": {
-        "max-length": 25
     },
     "clock": {
         "timezone": "America/Buenos_Aires",
@@ -136,15 +101,6 @@
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down"
         }
-    },
-    "cpu": {
-        "interval": 10,
-        "format": "{usage}%  "
-    },
-    "custom/search": {
-        "format": "<span size='10000'>〇</span>",
-        "tooltip": false,
-        "on-click": "pgrep -x rofi > /dev/null && pkill -x rofi || rofi -location 1 -theme-str 'window { y-offset: 2px; x-offset: 2px; }' -show drun -show-icons -run-command 'uwsm app -- {cmd}'"
     },
     "custom/tailscale": {
         "exec": "~/.config/waybar/scripts/tailscale.sh",
