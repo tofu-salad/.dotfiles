@@ -2,7 +2,7 @@
 @define-color bg01 rgba(38, 38, 38, 1);   /* #262626 */
 @define-color bg02 rgba(57, 57, 57, 1);   /* #393939 */
 @define-color bg03 rgba(82, 82, 82, 1);   /* #525252 */
-@define-color fg0 rgba(255, 255, 255, 1);/* #ffffff */
+@define-color fg0 rgba(255, 255, 255, 1); /* #ffffff */
 @define-color blue-40  #78a9ff;
 @define-color magenta-50  #ee5396;
 @define-color clear rgba(255, 255, 255, 0); /* #ffffff00 (fully transparent) */
@@ -64,12 +64,13 @@ button {
     padding: 0 5px;
 }
 
-#clock,
-#battery {
+#clock {
+    font-size: 0.85rem;
     padding: 0 0.625rem;
 }
 
 #battery {
+    padding: 0 0.625rem;
     background-color: @base06;
     color: @base00;
 }
