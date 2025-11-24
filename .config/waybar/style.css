@@ -9,7 +9,6 @@
 
 * {
     font-family: Adwaita Sans, "Font Awesome 6 Free";
-    font-size: 1rem;
 }
 
 
@@ -65,7 +64,6 @@ button {
 }
 
 #clock {
-    font-size: 0.85rem;
     padding: 0 0.625rem;
 }
 
@@ -138,10 +136,6 @@ button {
     margin: 0.125rem;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-}
-
-#mpris {
-    font-size: 0.85rem;
 }
 
 #custom-tailscale.disconnected:hover {
