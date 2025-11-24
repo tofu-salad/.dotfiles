@@ -1,3 +1,9 @@
+# if not running interactively, don't do anything
+case $- in
+*i*) ;;
+*) return ;;
+esac
+
 # aliases {{{
 alias shutdown='systemctl poweroff'
 alias reboot='systemctl reboot'
@@ -134,11 +140,6 @@ fi
 
 bind 'set completion-ignore-case on'
 
-# if not running interactively, don't do anything
-case $- in
-*i*) ;;
-*) return ;;
-esac
 
 HISTCONTROL=ignoreboth
 shopt -s histappend
