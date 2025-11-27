@@ -1,0 +1,9 @@
+[color]
+	ui = "auto"
+[gpg]
+	format = "openpgp"
+[init]
+	defaultBranch = "main"
+[user]
+	email = "67925799+tofu-salad@users.noreply.github.com"
+	name = "tofu-salad"
