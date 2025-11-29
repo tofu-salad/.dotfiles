@@ -6,6 +6,7 @@
     "modules-left": [
         "hyprland/workspaces",
         "sway/workspaces",
+        "niri/workspaces",
         "sway/mode"
     ],
     "modules-center": [
@@ -15,6 +16,7 @@
         "custom/tailscale",
         "hyprland/language",
         "sway/language",
+        "niri/language",
         "pulseaudio",
         "battery",
         "tray",
@@ -23,6 +25,10 @@
     "sway/language": {
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
         "tooltip": false
+    },
+    "niri/language": {
+        "format-en": "",
+        "format-es": "es"
     },
     "hyprland/language": {
         "on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
