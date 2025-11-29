@@ -92,6 +92,11 @@ layout {
         // bottom 64
     }
 }
+gestures {
+	hot-corners {
+		off
+	}
+}
 
 spawn-sh-at-startup "swaybg -m center -c 161616 -i ~/Pictures/Wallpapers/minu-phone.png"
 
@@ -115,11 +120,6 @@ animations {
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
-}
-
-/-window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
 }
 
 binds {
