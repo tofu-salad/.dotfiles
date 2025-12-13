@@ -72,7 +72,7 @@
         "format-icons": {
             "default": [
                 "",
-                ""
+                " "
             ]
         },
         "scroll-step": 5,

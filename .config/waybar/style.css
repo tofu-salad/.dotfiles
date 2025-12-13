@@ -8,7 +8,7 @@
 @define-color clear rgba(255, 255, 255, 0); /* #ffffff00 (fully transparent) */
 
 * {
-    font-family: Adwaita Sans, "Font Awesome 6 Free";
+    font-family: AdwaitaMono Nerd Font;
 }
 
 
