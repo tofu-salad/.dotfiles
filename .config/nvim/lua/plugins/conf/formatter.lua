@@ -30,6 +30,7 @@ require("conform").setup({
 		nix = { "nixfmt" },
 		sh = { "shfmt" },
 		sql = { "sql_formatter" },
+		qml = { "qmlformat" },
 	},
 })
 
