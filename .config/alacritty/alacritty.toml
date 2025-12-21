@@ -1,8 +1,8 @@
 [font]
 normal = { family = "Adwaita Mono" }
 [window]
-decorations = "None"
-startup_mode = "Maximized"
+# decorations = "None"
+# startup_mode = "Maximized"
 padding = { x = 4, y = 4 }
 [colors]
 footer_bar = { background = "#262626", foreground = "#ffffff"}
