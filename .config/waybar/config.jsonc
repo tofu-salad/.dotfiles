@@ -4,6 +4,7 @@
     "position": "top",
     "height": 0,
     "modules-left": [
+	"custom/apps",
         "hyprland/workspaces",
         "sway/workspaces",
         "niri/workspaces",
@@ -20,7 +21,8 @@
         "pulseaudio",
         "battery",
         "tray",
-        "network"
+        "network",
+	"custom/powermenu"
     ],
     "sway/language": {
         "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
@@ -68,11 +70,16 @@
         "format": "{icon}",
         "format-bluetooth": "{volume}% {icon}",
         "tooltip-format": "{volume}% - {desc}",
-        "format-muted": "<span color='#ee5396'></span>",
+        "format-muted": "<span color='#ee5396'>󰝟</span>",
+	"states": {
+		"zero": 0
+	},
+	"format-zero": "󰝟",
         "format-icons": {
             "default": [
-                "",
-                " "
+                "󰕿",
+		"󰖀",
+		"󰕾"
             ]
         },
         "scroll-step": 5,
@@ -107,6 +114,16 @@
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down"
         }
+    },
+    "custom/apps": {
+	    "format": "apps",
+	    "on-click": "fuzzel -a top-left",
+	    "tooltip-format": "search apps"
+    },
+    "custom/powermenu": {
+	    "format": "󰐥",
+	    "on-click": "uwsm app -- wlogout",
+	    "tooltip-format": "power menu"
     },
     "custom/tailscale": {
         "exec": "~/.config/waybar/scripts/tailscale.sh",

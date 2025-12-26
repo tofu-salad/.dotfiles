@@ -97,8 +97,8 @@ button {
 }
 
 /* If custom-search is the leftmost module, add left margin */
-.modules-left>widget:first-child>#custom-search {
-    margin: 0 0.4rem;
+.modules-left>widget:first-child>#custom-apps {
+    margin: 0 .4rem;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -108,13 +108,10 @@ button {
 
 
 /* If network is the rightmost module, add right margin */
-.modules-right>widget:last-child>#network {
+.modules-right>widget:last-child>#custom-powermenu {
     margin-right: 0.4rem;
 }
 
-#pulseaudio {
-    font-size: 0.75rem;
-}
 
 #clock,
 #battery,

@@ -1,7 +1,7 @@
 quit-after-last-window-closed = false
 theme = oxocarbon-tofu
 background = #161616
-font-family = IosevkaTerm NFM
+font-family = Adwaita Mono
 maximize = true
 
 gtk-titlebar = false
