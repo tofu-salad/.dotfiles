@@ -1,137 +1,123 @@
 {
-    "layer": "bot",
-    "spacing": 0,
-    "position": "top",
-    "height": 0,
-    "modules-left": [
-	"custom/apps",
-        "hyprland/workspaces",
-        "sway/workspaces",
-        "niri/workspaces",
-        "sway/mode"
-    ],
-    "modules-center": [
-        "clock"
-    ],
-    "modules-right": [
-        "custom/tailscale",
-        "hyprland/language",
-        "sway/language",
-        "niri/language",
-        "pulseaudio",
-        "battery",
-        "tray",
-        "network",
-	"custom/powermenu"
-    ],
-    "sway/language": {
-        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
-        "tooltip": false
+  "layer": "bot",
+  "spacing": 0,
+  "position": "top",
+  "height": 0,
+  "modules-left": [
+    "custom/apps",
+    "hyprland/workspaces",
+    "sway/workspaces",
+    "niri/workspaces",
+    "sway/mode"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "custom/tailscale",
+    "hyprland/language",
+    "sway/language",
+    "niri/language",
+    "pulseaudio",
+    "battery",
+    "tray",
+    "network",
+    "custom/powermenu"
+  ],
+  "sway/language": {
+    "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    "tooltip": false
+  },
+  "niri/language": {
+    "format-en": "",
+    "format-es": "es"
+  },
+  "hyprland/language": {
+    "on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>"
+  },
+  "tray": {
+    "spacing": 10
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
     },
-    "niri/language": {
-        "format-en": "",
-        "format-es": "es"
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+    "on-click": "alacritty -T nmtui -e nmtui",
+    "format-wifi": "",
+    "format-ethernet": "eth",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected "
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "tooltip-format": "{volume}% - {desc}",
+    "format-muted": "<span color='#ee5396'>󰝟</span>",
+    "states": {
+      "zero": 0
     },
-    "hyprland/language": {
-        "on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
+    "format-zero": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+    "scroll-step": 5,
+    "on-click": "uwsm app -- pwvucontrol",
+    "ignored-sinks": ["Easy Effects Sink"]
+  },
+  "clock": {
+    "timezone": "America/Buenos_Aires",
+    "format": "{:%a %d %R %p}",
+    "locale": "en_US.UTF-8",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "<span><big></big><tt><small>{calendar}</small></tt></span>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 1,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ee5396'><b><u>{}</u></b></span>"
+      }
     },
-    "tray": {
-        "spacing": 10
-    },
-    "battery": {
-        "states": {
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ]
-    },
-    "network": {
-        "on-click": "alacritty -T nmtui -e nmtui",
-        "format-wifi": "",
-        "format-ethernet": "eth",
-        "tooltip-format": "{ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected "
-    },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "tooltip-format": "{volume}% - {desc}",
-        "format-muted": "<span color='#ee5396'>󰝟</span>",
-	"states": {
-		"zero": 0
-	},
-	"format-zero": "󰝟",
-        "format-icons": {
-            "default": [
-                "󰕿",
-		"󰖀",
-		"󰕾"
-            ]
-        },
-        "scroll-step": 5,
-        "on-click": "pwvucontrol",
-        "ignored-sinks": [
-            "Easy Effects Sink"
-        ]
-    },
-    "clock": {
-        "timezone": "America/Buenos_Aires",
-        "format": "{:%a %d %R %p}",
-        "locale": "en_US.UTF-8",
-        "format-alt": "{:%A, %B %d, %Y (%R)}  ",
-        "tooltip-format": "<span><big></big><tt><small>{calendar}</small></tt></span>",
-        "calendar": {
-            "mode": "month",
-            "mode-mon-col": 1,
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>",
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ee5396'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
-    },
-    "custom/apps": {
-	    "format": "apps",
-	    "on-click": "fuzzel -a top-left",
-	    "tooltip-format": "search apps"
-    },
-    "custom/powermenu": {
-	    "format": "󰐥",
-	    "on-click": "uwsm app -- wlogout",
-	    "tooltip-format": "power menu"
-    },
-    "custom/tailscale": {
-        "exec": "~/.config/waybar/scripts/tailscale.sh",
-        "on-click": "~/.config/waybar/scripts/tailscale.sh --toggle",
-        "interval": 30,
-        "return-type": "json",
-        "format": "{}",
-        "hide-empty-text": false,
-        "signal": 9
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
     }
+  },
+  "custom/apps": {
+    "format": "apps",
+    "on-click": "uwsm app -- fuzzel -a top-left --launch-prefix=uwsm app --",
+    "tooltip-format": "search apps"
+  },
+  "custom/powermenu": {
+    "format": "󰐥",
+    "tooltip-format": "Power menu",
+    "on-click": "swaynag --background 161616 --border 323232 -t warning -m 'Power menu' -B 'logout' 'swaymsg exit' -B 'reboot' 'systemctl reboot' -B 'shutdown' 'systemctl poweroff'"
+  },
+  "custom/tailscale": {
+    "exec": "~/.config/waybar/scripts/tailscale.sh",
+    "on-click": "~/.config/waybar/scripts/tailscale.sh --toggle",
+    "interval": 30,
+    "return-type": "json",
+    "format": "{}",
+    "hide-empty-text": false,
+    "signal": 9
+  }
 }
