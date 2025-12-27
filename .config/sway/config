@@ -16,4 +16,3 @@ gaps outer 2
 hide_edge_borders smart_no_gaps
 
 output * resolution 1920x1080@74.973Hz position 0 0 bg ~/Wallpapers/minu-phone.png center #161616
-seat "*" xcursor_theme Adwaita 24
