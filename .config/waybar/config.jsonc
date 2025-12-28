@@ -1,8 +1,8 @@
 {
   "layer": "bot",
-  "spacing": 0,
+  "spacing": 4,
   "position": "top",
-  "height": 0,
+  "height": 24,
   "modules-left": [
     "custom/apps",
     "hyprland/workspaces",
@@ -20,6 +20,7 @@
     "battery",
     "tray",
     "network",
+    "image#test-one",
     "custom/powermenu"
   ],
   "sway/language": {
@@ -52,23 +53,19 @@
   },
   "network": {
     "on-click": "alacritty -T nmtui -e nmtui",
-    "format-wifi": "",
-    "format-ethernet": "eth",
+    "format": "  ",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected "
   },
   "pulseaudio": {
-    "format": "{icon}",
+    "format": "  ",
     "format-bluetooth": "{volume}% {icon}",
     "tooltip-format": "{volume}% - {desc}",
     "format-muted": "<span color='#ee5396'>󰝟</span>",
     "states": {
-      "zero": 0
-    },
-    "format-zero": "󰝟",
-    "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"]
+      "zero": 0,
+      "low": 25,
+      "medium": 50,
+      "high": 100
     },
     "scroll-step": 5,
     "on-click": "uwsm app -- pwvucontrol",
@@ -102,12 +99,12 @@
     }
   },
   "custom/apps": {
-    "format": "apps",
+    "format": "  ",
     "on-click": "uwsm app -- fuzzel -a top-left --launch-prefix=uwsm app --",
     "tooltip-format": "search apps"
   },
   "custom/powermenu": {
-    "format": "󰐥",
+    "format": "  ",
     "tooltip-format": "Power menu",
     "on-click": "swaynag --background 161616 --border 323232 -t warning -m 'Power menu' -B 'logout' \"loginctl kill-session $XDG_SESSION_ID\" -B 'reboot' \"systemctl reboot\" -B 'shutdown' \"systemctl poweroff\""
   },
@@ -116,7 +113,7 @@
     "on-click": "~/.config/waybar/scripts/tailscale.sh --toggle",
     "interval": 30,
     "return-type": "json",
-    "format": "{}",
+    "format": "   ",
     "hide-empty-text": false,
     "signal": 9
   }

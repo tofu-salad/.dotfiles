@@ -96,9 +96,9 @@ button {
     animation-direction: alternate;
 }
 
-/* If custom-search is the leftmost module, add left margin */
+/* If custom-apps is the leftmost module, add left margin */
 .modules-left>widget:first-child>#custom-apps {
-    margin: 0 .4rem;
+    margin-left: 0.4rem;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -130,24 +130,59 @@ button {
 #scratchpad,
 #language,
 #title,
+#custom-apps,
+#custom-powermenu,
+#custom-tailscale,
 #mpd {
-    margin: 0.125rem;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
+	padding: 0 0.25rem;
 }
 
-#custom-tailscale.disconnected:hover {
-    color: @blue-40;
+/* icons */
+#network, #pulseaudio, #custom-powermenu, #custom-apps, #custom-tailscale {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#network.ethernet {
+	background-image: url("/home/tofu/.config/waybar/icons/network.png");
+}
+#network.wifi {
+	background-image: url("/home/tofu/.config/waybar/icons/wifi.png");
+}
+
+#network.disconnected {
+	background-image: url("/home/tofu/.config/waybar/icons/network-off.png");
+}
+
+#pulseaudio.zero {
+	background-image: url("/home/tofu/.config/waybar/icons/volume-off.png");
+}
+
+#pulseaudio.low {
+	background-image: url("/home/tofu/.config/waybar/icons/volume.png");
+}
+
+#pulseaudio.medium {
+	background-image: url("/home/tofu/.config/waybar/icons/volume-1.png");
+}
+
+#pulseaudio.high {
+	background-image: url("/home/tofu/.config/waybar/icons/volume-2.png");
+}
+
+#custom-powermenu {
+	background-image: url("/home/tofu/.config/waybar/icons/power.png");
+}
+
+#custom-apps {
+	background-image: url("/home/tofu/.config/waybar/icons/menu.png");
 }
 
 #custom-tailscale.connected {
-    color: @fg0;
-}
-
-#custom-tailscale.connected:hover {
-    color: @magenta-50;
+	background-image: url("/home/tofu/.config/waybar/icons/tailscale.png");
 }
 
 #custom-tailscale.disconnected {
-    color: @bg03;
+	background-image: url("/home/tofu/.config/waybar/icons/tailscale-off.png");
 }

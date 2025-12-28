@@ -28,10 +28,8 @@ online=$(echo "$status" | jq -r '.Self.Online')
 
 if [[ "$online" == "true" ]]; then
   class="connected"
-  icon=" "
 else
   class="disconnected"
-  icon=" "
 fi
 
 tooltip=$(echo "$status" | jq -r '
@@ -49,5 +47,5 @@ tooltip=$(echo "$status" | jq -r '
   | join("\n")
 ')
 
-jq -nc --arg text "$icon" --arg tooltip "<tt><small>$tooltip</small></tt>" --arg class "$class" \
+jq -nc --arg text "" --arg tooltip "<tt><small>$tooltip</small></tt>" --arg class "$class" \
   '{text: $text, tooltip: $tooltip, class: $class}'
