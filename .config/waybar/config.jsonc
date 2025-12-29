@@ -12,15 +12,14 @@
   ],
   "modules-center": ["clock"],
   "modules-right": [
+    "tray",
     "custom/tailscale",
     "hyprland/language",
     "sway/language",
     "niri/language",
     "pulseaudio",
     "battery",
-    "tray",
     "network",
-    "image#test-one",
     "custom/powermenu"
   ],
   "sway/language": {
@@ -100,7 +99,7 @@
   },
   "custom/apps": {
     "format": "  ",
-    "on-click": "uwsm app -- fuzzel -a top-left --launch-prefix=uwsm app --",
+    "on-click": "uwsm app -- fuzzel -a top-left --launch-prefix='uwsm app --'",
     "tooltip-format": "search apps"
   },
   "custom/powermenu": {
