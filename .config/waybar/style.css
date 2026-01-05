@@ -159,10 +159,6 @@ button {
 	background-image: url("/home/tofu/.config/waybar/icons/volume-off.png");
 }
 
-#pulseaudio.low {
-	background-image: url("/home/tofu/.config/waybar/icons/volume.png");
-}
-
 #pulseaudio.medium {
 	background-image: url("/home/tofu/.config/waybar/icons/volume-1.png");
 }
