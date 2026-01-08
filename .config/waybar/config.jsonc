@@ -104,7 +104,7 @@
   "custom/powermenu": {
     "format": "  ",
     "tooltip-format": "Power menu",
-    "on-click": "swaynag --background 161616 --border 323232 -t warning -m 'Power menu' -B 'logout' \"loginctl kill-session $XDG_SESSION_ID\" -B 'reboot' \"systemctl reboot\" -B 'shutdown' \"systemctl poweroff\""
+    "on-click": "swaynag --background 161616 --border 323232 -t warning -m 'Power menu' -B 'logout' \"uwsm stop\" -B 'reboot' \"systemctl reboot\" -B 'shutdown' \"systemctl poweroff\""
   },
   "custom/tailscale": {
     "exec": "~/.config/waybar/scripts/tailscale.sh",
