@@ -61,7 +61,7 @@ parse_git_branch() {
     [[ $status == *$'\n? '* ]] && bits="?${bits}"
     [[ $status =~ \ [MAD]. ]] && bits="+${bits}"
     [[ $status =~ \ .[MAD] ]] && bits="*${bits}"
-    [[ $status =~ branch\.ab\ \+[1-9] ]] && bits="*${bits}"
+    [[ $status =~ branch\.ab\ \+[1-9][0-9]* ]] && bits="*${bits}"
     [[ -n $BRANCH ]] && printf '‹%s%s›' "$BRANCH" "$bits"
 }
 
