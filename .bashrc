@@ -9,7 +9,6 @@ bind 'set completion-ignore-case on'
 shopt -s histappend
 shopt -s globstar
 shopt -s checkwinsize
-shopt -s failglob
 
 HISTCONTROL=ignoreboth
 HISTSIZE=1000
@@ -54,25 +53,16 @@ fi
 # }}}
 
 # prompt {{{
-parse_git_dirty() {
-    local status bits=""
-    status=$(git status --porcelain=2 --branch 2>/dev/null) || return
-
-    [[ $status == *"branch.ab +"* ]] && bits="*${bits}"
-    [[ $status == *$'\n? '* ]] && bits="?${bits}"
-    [[ $status == *" M "* ]] && bits="*${bits}"
-    [[ $status == *" A "* ]] && bits="+${bits}"
-    [[ $status == *" D "* ]] && bits="x${bits}"
-    [[ $status == *" R "* ]] && bits=">${bits}"
-
-    printf '%s' "$bits"
-}
-
 parse_git_branch() {
     git rev-parse --is-inside-work-tree &>/dev/null || return
-    local BRANCH
+    local BRANCH status bits=""
     BRANCH=$(git branch --show-current)
-    [[ -n $BRANCH ]] && printf '‹%s%s›' "$BRANCH" "$(parse_git_dirty)"
+    status=$(git status --porcelain=2 --branch 2>/dev/null)
+    [[ $status == *"branch.ab +[1-9]"* ]] && bits="*${bits}"
+    [[ $status == *$'\n? '* ]] && bits="?${bits}"
+    [[ $status =~ \ [MAD]. ]] && bits="+${bits}"
+    [[ $status =~ \ .[MAD] ]] && bits="*${bits}"
+    [[ -n $BRANCH ]] && printf '‹%s%s›' "$BRANCH" "$bits"
 }
 
 in_nix_shell() {
