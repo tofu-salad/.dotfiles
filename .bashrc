@@ -58,31 +58,10 @@ parse_git_branch() {
     local BRANCH status bits=""
     BRANCH=$(git branch --show-current)
     status=$(git status --porcelain=2 --branch 2>/dev/null)
-    
-    echo "DEBUG: status output:" >&2
-    echo "$status" >&2
-    echo "DEBUG: checking patterns:" >&2
-    
-    if [[ $status == *$'\n? '* ]]; then
-        echo "DEBUG: found untracked" >&2
-        bits="?${bits}"
-    fi
-    
-    if [[ $status =~ \ [MAD]. ]]; then
-        echo "DEBUG: found staged" >&2
-        bits="+${bits}"
-    fi
-    
-    if [[ $status =~ \ .[MAD] ]]; then
-        echo "DEBUG: found unstaged" >&2
-        bits="*${bits}"
-    fi
-    
-    if [[ $status =~ branch\.ab\ \+[0-9] ]]; then
-        echo "DEBUG: found unpushed" >&2
-        bits="↑${bits}"
-    fi
-    
+    [[ $status == *$'\n? '* ]] && bits="?${bits}"
+    [[ $status =~ \ [MAD]. ]] && bits="+${bits}"
+    [[ $status =~ \ .[MAD] ]] && bits="*${bits}"
+    [[ $status =~ branch\.ab\ \+[1-9] ]] && bits="*${bits}"
     [[ -n $BRANCH ]] && printf '‹%s%s›' "$BRANCH" "$bits"
 }
 
