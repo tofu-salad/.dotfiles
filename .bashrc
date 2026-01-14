@@ -58,7 +58,7 @@ parse_git_branch() {
     local BRANCH status bits=""
     BRANCH=$(git branch --show-current)
     status=$(git status --porcelain=2 --branch 2>/dev/null)
-    [[ $status =~ branch\.ab\ \+[0-9] ]] && bits="↑${bits}"
+    [[ $status =~ branch\.ab\ \+[0-9] ]] && bits="*${bits}"
 
     [[ $status == *$'\n? '* ]] && bits="?${bits}"
     [[ $status =~ \ [MAD]. ]] && bits="+${bits}"
