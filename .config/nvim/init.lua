@@ -1,27 +1,37 @@
 -- options
-vim.opt.termguicolors = true
-vim.opt.breakindent = true
-vim.opt.colorcolumn = "80"
-vim.opt.completeopt:append("noselect")
-vim.opt.hlsearch = false
-vim.opt.ignorecase = true
-vim.opt.inccommand = "split"
-vim.opt.incsearch = true
-vim.opt.laststatus = 3
-vim.opt.mouse = "a"
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 10
-vim.opt.showmode = true
-vim.opt.sidescrolloff = 10
-vim.opt.signcolumn = "yes"
-vim.opt.smartcase = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.swapfile = false
-vim.opt.undofile = true
-vim.opt.wrap = false
+vim.g.have_nerd_font = false
+vim.o.mouse = "a"
 
+vim.o.hlsearch = false
+vim.o.inccommand = "split"
+vim.o.incsearch = true
+
+vim.o.scrolloff = 10
+vim.o.sidescrolloff = 10
+vim.o.wrap = false
+
+vim.o.colorcolumn = "80"
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.signcolumn = "yes"
+
+vim.o.breakindent = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+
+vim.o.timeoutlen = 300
+vim.o.updatetime = 250
+
+vim.o.swapfile = false
+vim.o.undofile = true
+
+vim.o.splitbelow = true
+vim.o.splitright = true
+
+vim.o.laststatus = 3
+vim.opt.completeopt:append("noselect")
 -- keymaps
 vim.g.mapleader = " "
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
