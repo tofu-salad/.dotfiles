@@ -1,23 +1,34 @@
--- typescript comments
-require("ts_context_commentstring").setup({
-	enable_autocmd = false,
-})
-local get_option = vim.filetype.get_option
+local ts = require("nvim-treesitter")
 
----@diagnostic disable-next-line: duplicate-set-field
-vim.filetype.get_option = function(filetype, option)
-	return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
-		or get_option(filetype, option)
-end
+local ignore_parsers = {
+	jsonc = true,
+}
 
-require("nvim-treesitter.configs").setup({
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
-	sync_install = false,
-	auto_install = true,
-	ignore_install = { "jsonc" },
-	highlight = {
-		enable = true,
-		disable = {},
-	},
-	indent = { enable = true },
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function(ctx)
+		local ft = ctx.match
+		if not ft or ft == "" then
+			return
+		end
+
+		local lang = vim.treesitter.language.get_lang(ft)
+		if not lang or ignore_parsers[lang] then
+			return
+		end
+
+		local available_parsers = ts.get_available()
+		if not vim.tbl_contains(available_parsers, lang) then
+			return
+		end
+
+		local installed = ts.get_installed("parsers")
+		if not vim.tbl_contains(installed, lang) then
+			ts.install({ lang })
+			return
+		end
+
+		pcall(vim.treesitter.start, ctx.buf)
+		vim.bo[ctx.buf].indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
+	end,
 })
