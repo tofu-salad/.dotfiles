@@ -43,3 +43,11 @@ vim.filetype.add({
 		end,
 	},
 })
+
+-- web tab spacing
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" },
+	callback = function()
+		vim.o.tabstop = 4
+	end,
+})

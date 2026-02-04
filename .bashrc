@@ -77,7 +77,10 @@ is_fhs() {
     fi
 }
 
-PS1='\[\e[34m\]$(in_nix_shell)\[\e[m\]\[\e[31m\]$(is_fhs)\[\e[m\]\[\e[32m\]\w \[\e[m\]\[\e[33m\]$(parse_git_branch)\[\e[m\] \$ '
+PS1='\[\e[34m\]\[$(in_nix_shell)\]\[\e[m\]'\
+'\[\e[31m\]\[$(is_fhs)\]\[\e[m\]'\
+'\[\e[32m\]\w \[\e[m\]'\
+'\[\e[33m\]\[$(parse_git_branch)\]\[\e[m\] \$ '
 # }}}
 
 # env {{{

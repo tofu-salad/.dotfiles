@@ -1,4 +1,5 @@
 return {
+	{ "NMAC427/guess-indent.nvim", opts = {} },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,

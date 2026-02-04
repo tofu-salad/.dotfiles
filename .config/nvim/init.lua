@@ -18,8 +18,6 @@ vim.o.signcolumn = "yes"
 vim.o.breakindent = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
 
 vim.o.timeoutlen = 300
 vim.o.updatetime = 250
@@ -65,6 +63,14 @@ vim.g.netrw_use_errorwindow = 0
 vim.g.netrw_keepdir = 1
 
 -- lsp
+vim.diagnostic.config({
+	update_in_insert = false,
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	underline = { severity = vim.diagnostic.severity.ERROR },
+	jump = { float = true },
+})
+
 local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
 local all_files = vim.fn.readdir(lsp_dir)
 
@@ -114,7 +120,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, "[w]orkspace [s]ymbols")
 
 		-- see `:help K` for why this keymap
-		map("K", vim.lsp.buf.hover, "hover documentation")
+		map("K", function()
+			vim.lsp.buf.hover({ border = "rounded" })
+		end, "hover documentation")
 		map("<C-k>", vim.lsp.buf.signature_help, "signature documentation")
 
 		-- lesser used lsp functionality
