@@ -53,34 +53,9 @@ fi
 # }}}
 
 # prompt {{{
-parse_git_branch() {
-    git rev-parse --is-inside-work-tree &>/dev/null || return
-    local BRANCH status bits=""
-    BRANCH=$(git branch --show-current)
-    status=$(git status --porcelain=2 --branch 2>/dev/null)
-    [[ $status == *$'\n? '* ]] && bits="?${bits}"
-    [[ $status =~ \ [MAD]. ]] && bits="+${bits}"
-    [[ $status =~ \ .[MAD] ]] && bits="*${bits}"
-    [[ $status =~ branch\.ab\ \+[1-9][0-9]* ]] && bits="*${bits}"
-    [[ -n $BRANCH ]] && printf '‹%s%s›' "$BRANCH" "$bits"
-}
-
-in_nix_shell() {
-    if [ -n "$IN_NIX_SHELL" ]; then
-        printf '<nix-shell> '
-    fi
-}
-
-is_fhs() {
-    if [ "$FHS" = "1" ]; then
-        printf '(fhs) '
-    fi
-}
-
-PS1='\[\e[34m\]\[$(in_nix_shell)\]\[\e[m\]'\
-'\[\e[31m\]\[$(is_fhs)\]\[\e[m\]'\
-'\[\e[32m\]\w \[\e[m\]'\
-'\[\e[33m\]\[$(parse_git_branch)\]\[\e[m\] \$ '
+if command -v starship >/dev/null; then
+    eval "$(starship init bash)"
+fi
 # }}}
 
 # env {{{
