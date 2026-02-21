@@ -1,7 +1,7 @@
 [font]
 normal = { family = "Adwaita Mono" }
 [window]
-# decorations = "None"
+decorations = "None"
 startup_mode = "Maximized"
 padding = { x = 4, y = 4 }
 [colors]
