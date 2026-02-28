@@ -1,3 +1,10 @@
+spawn-at-startup "./autostart.sh"
+
+gestures {
+    hot-corners {
+        off
+    }
+}
 
 input {
     keyboard {
@@ -94,9 +101,19 @@ screenshot-path "~/Pictures/Screenshots/screenshot_from_%Y-%m-%d %H-%M-%S.png"
 // animations {
 // }
 
+
+
 window-rule {
     geometry-corner-radius 4
     clip-to-geometry true
+}
+
+window-rule {
+    match title="Project Diablo 2 Launcher"
+    match app-id="steam_app_default"
+    default-window-height { fixed 575; }
+    default-column-width { fixed 775; }
+    open-floating true
 }
 
 binds {
