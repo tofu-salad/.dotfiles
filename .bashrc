@@ -17,16 +17,10 @@ PROMPT_COMMAND='history -a; history -n'
 # }}}
 
 # aliases {{{
-alias ll='LC_COLLATE=C ls -ialF --group-directories-first'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='LC_COLLATE=C ls -ialF --color=auto --group-directories-first'
 
 if command -v dircolors >/dev/null; then
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
     alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
 fi
 
 if command -v nvim >/dev/null; then
