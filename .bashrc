@@ -52,15 +52,11 @@ if [ -d "$HOME/.bun" ]; then
 fi
 # }}}
 
-# prompt {{{
-if command -v starship >/dev/null; then
-    eval "$(starship init bash)"
-fi
-# }}}
-
 # env {{{
 if [ -f "${HOME}/.dir_colors" ]; then
     eval "$(dircolors ~/.dir_colors)"
+elif command -v dircolors >/dev/null; then
+    eval "$(dircolors -b)"
 fi
 
 if [ -e "${HOME}/.cargo/env" ]; then
@@ -77,5 +73,11 @@ case "$TERM" in
     wezterm*|ghostty*) ;;
     *) bind -x '"\C-t": bash "$HOME/.config/scripts/tmux-sessionizer"' ;;
 esac
+# }}}
+
+# prompt {{{
+if command -v starship >/dev/null; then
+    eval "$(starship init bash)"
+fi
 # }}}
 # vim: set ft=sh foldmethod=marker foldlevel=0:
