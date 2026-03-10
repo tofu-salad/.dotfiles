@@ -31,12 +31,6 @@ return {
 		end,
 	},
 	{
-		"mfussenegger/nvim-lint",
-		config = function()
-			require("plugins.conf.nvim-lint")
-		end,
-	},
-	{
 		"j-hui/fidget.nvim",
 		opts = {},
 	},
@@ -63,17 +57,12 @@ return {
 		end,
 	},
 	{
-		"jesseleite/nvim-noirbuddy",
+		"jesseleite/noirbuddy.nvim",
 		dependencies = {
 			{ "tjdevries/colorbuddy.nvim" },
 		},
 		lazy = false,
 		priority = 1000,
-		opts = {
-			colors = {
-				background = "#161616",
-			},
-		},
-		install = { colorscheme = { "noirbuddy" } },
+		opts = {},
 	},
 }
