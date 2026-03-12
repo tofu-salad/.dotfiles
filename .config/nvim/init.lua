@@ -36,56 +36,15 @@ vim.g.netrw_use_errorwindow = 0
 vim.g.netrw_keepdir = 1
 
 -- commands
-vim.api.nvim_create_user_command('LspInfo', function()
-	vim.cmd('checkhealth vim.lsp')
+vim.api.nvim_create_user_command("LspInfo", function()
+	vim.cmd("checkhealth vim.lsp")
 end, {})
-
-vim.api.nvim_create_user_command('FindCwd', function(opts)
-	local input = opts.args
-	if input == '' then return end
-	local cwd = vim.fn.getcwd() .. '/'
-	vim.cmd('edit ' .. vim.fn.fnameescape(cwd .. input))
-end, {
-	nargs = 1,
-	complete = function(arglead)
-		local cwd = vim.fn.getcwd() .. '/'
-		local matches = vim.fn.systemlist('fd --type f --max-results 20 --glob ' ..
-			vim.fn.shellescape('*' .. arglead .. '*') .. ' ' .. vim.fn.shellescape(cwd))
-		return vim.tbl_map(function(f)
-			return f:gsub('^' .. vim.pesc(cwd), '')
-		end, matches)
-	end,
-})
-
-vim.api.nvim_create_user_command('FindGit', function(opts)
-	local input = opts.args
-	if input == '' then return end
-
-	local files = vim.fn.systemlist('git ls-files')
-	local matches = vim.tbl_filter(function(f)
-		return f:find(input, 1, true) ~= nil
-	end, files)
-
-	if #matches == 0 then
-		vim.notify('No files found: ' .. input, vim.log.levels.WARN)
-	else
-		vim.cmd('edit ' .. vim.fn.fnameescape(matches[1]))
-	end
-end, {
-	nargs = 1,
-	complete = function(arglead)
-		local files = vim.fn.systemlist('git ls-files')
-		return vim.tbl_filter(function(f)
-			return f:find(arglead, 1, true) ~= nil
-		end, files)
-	end,
-})
 
 -- keymaps
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("v", "<leader>y", '"+y', { silent = true, desc = "[y]ank to system clipbloard" })
+vim.keymap.set("v", "<leader>y", "\"+y", { silent = true, desc = "[y]ank to system clipbloard" })
 vim.keymap.set("v", "<", "<gv", { silent = true, desc = "indent left without leaving visual mode [<]" })
 vim.keymap.set("v", ">", ">gv", { silent = true, desc = "indent right without leaving visual mode [>]" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "move text up in visual mode [J]" })
@@ -109,16 +68,9 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "move focus to the upper window" })
 
-
-vim.keymap.set('n', '<leader>ff', ':FindCwd ', { desc = "[f]ind [f]iles" })
-vim.keymap.set('n', '<leader>ft', ':FindGit ', { desc = '[f]ind gi[t] files' })
-vim.keymap.set('n', '<leader>fg', function()
-	vim.ui.input({ prompt = 'Grep > ' }, function(input)
-		if not input or input == '' then return end
-		vim.cmd('silent grep ' .. input)
-		vim.cmd('copen')
-	end)
-end, { desc = '[f]iles [g]rep' })
+vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", { desc = "[f]ind [f]iles" })
+vim.keymap.set("n", "<leader>ft", ":Pick files tool=\"git\"<CR>", { desc = "[f]ind gi[t] files" })
+vim.keymap.set("n", "<leader>fg", ":Pick grep<CR>", { desc = "[f]iles [g]rep" })
 
 -- autocmds
 
@@ -136,12 +88,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- [[ vertical help ]]
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "help",
-	command = "wincmd L"
+	command = "wincmd L",
 })
 
 -- [[ auto resize splits ]]
 vim.api.nvim_create_autocmd("VimResized", {
-	command = "wincmd ="
+	command = "wincmd =",
 })
 
 -- lsp
@@ -213,76 +165,91 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local path_package = vim.fn.stdpath("data") .. "/site/"
+local mini_path = path_package .. "pack/deps/start/mini.nvim"
 ---@diagnostic disable-next-line: undefined-field
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
-			{ "\npress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+if not vim.loop.fs_stat(mini_path) then
+	vim.cmd("echo \"Installing `mini.nvim`\" | redraw")
+	local clone_cmd = {
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/nvim-mini/mini.nvim",
+		mini_path,
+	}
+	vim.fn.system(clone_cmd)
+	vim.cmd("packadd mini.nvim | helptags ALL")
+	vim.cmd("echo \"Installed `mini.nvim`\" | redraw")
 end
-vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	{
-		"jesseleite/noirbuddy.nvim",
-		dependencies = {
-			{ "tjdevries/colorbuddy.nvim" }
+require("mini.deps").setup({ path = { package = path_package } })
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+
+now(function()
+	add({
+		source = "oskarnurm/koda.nvim",
+	})
+	require("koda").setup({
+		colors = {
+			bg = "#161616",
 		},
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
-	{
-		"j-hui/fidget.nvim",
-		opts = {},
-	},
-	{
-		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
-		build = ":TSUpdate",
-		config = function()
-			local ts = require("nvim-treesitter")
+	})
+	vim.cmd("colorscheme koda")
+end)
 
-			local ignore_parsers = {
-				jsonc = true,
-			}
+later(function()
+	add({ source = "nvim-mini/mini.pick", checkout = "stable" })
+	require("mini.pick").setup()
+end)
 
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = "*",
-				callback = function(ctx)
-					local ft = ctx.match
-					if not ft or ft == "" then
-						return
-					end
+later(function()
+	add({
+		source = "j-hui/fidget.nvim",
+	})
+	require("fidget").setup({})
+end)
 
-					local lang = vim.treesitter.language.get_lang(ft)
-					if not lang or ignore_parsers[lang] then
-						return
-					end
+later(function()
+	add({
+		source = "nvim-treesitter/nvim-treesitter",
+		hooks = {
+			post_checkout = function()
+				vim.cmd("TSUpdate")
+			end,
+		},
+	})
+	local ts = require("nvim-treesitter")
 
-					local available_parsers = ts.get_available()
-					if not vim.tbl_contains(available_parsers, lang) then
-						return
-					end
+	local ignore_parsers = {
+		jsonc = true,
+	}
 
-					local installed = ts.get_installed("parsers")
-					if not vim.tbl_contains(installed, lang) then
-						ts.install({ lang })
-						return
-					end
+	vim.api.nvim_create_autocmd("FileType", {
+		pattern = "*",
+		callback = function(ctx)
+			local ft = ctx.match
+			if not ft or ft == "" then
+				return
+			end
 
-					pcall(vim.treesitter.start, ctx.buf)
-					vim.bo[ctx.buf].indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
-				end,
-			})
+			local lang = vim.treesitter.language.get_lang(ft)
+			if not lang or ignore_parsers[lang] then
+				return
+			end
+
+			local available_parsers = ts.get_available()
+			if not vim.tbl_contains(available_parsers, lang) then
+				return
+			end
+
+			local installed = ts.get_installed("parsers")
+			if not vim.tbl_contains(installed, lang) then
+				ts.install({ lang })
+				return
+			end
+
+			pcall(vim.treesitter.start, ctx.buf)
+			vim.bo[ctx.buf].indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
 		end,
-	},
-})
+	})
+end)

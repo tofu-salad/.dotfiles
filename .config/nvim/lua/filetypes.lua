@@ -1,50 +1,34 @@
 vim.filetype.add({
-	extension = { rasi = "rasi" },
+	extension = {
+		rasi = "rasi",
+		templ = "templ",
+		gotmpl = "gotmpl",
+		conf = "swayconfig",
+	},
 	pattern = {
+		-- waybar
 		[".*/waybar/.*/*.conf"] = "jsonc",
 		[".*/waybar/config"] = "jsonc",
-		[".*/mako/config"] = "dosini",
-		[".*/kitty/*.conf"] = "bash",
-		[".*/hypr/.*%.conf"] = "hyprlang",
-	},
-})
-
-vim.filetype.add({
-	extension = { rasi = "rasi" },
-	pattern = {
 		["~/.config/waybar/config"] = "jsonc",
-	},
-})
-
-vim.filetype.add({
-	extension = { conf = "swayconfig" },
-	pattern = {
+		-- mako
+		[".*/mako/config"] = "dosini",
+		-- kitty
+		[".*/kitty/*.conf"] = "bash",
+		-- hyprland
+		[".*/hypr/.*%.conf"] = "hyprlang",
+		-- sway
 		["~/.config/sway/config"] = "swayconfig",
 		["~/.config/sway/conf.d/*.conf"] = "swayconfig",
-	},
-})
-
-vim.filetype.add({
-	extension = {
-		templ = "templ",
-	},
-})
-
-vim.filetype.add({
-	extension = { gotmpl = "gotmpl" },
-	pattern = {
+		-- go templates
 		[".*"] = function(path)
-			local root_dir = vim.fn.getcwd()
-			local go_mod_path = root_dir .. "/go.mod"
-
-			if vim.fn.filereadable(go_mod_path) == 1 and path:match("%.html$") then
+			local go_mod = vim.fn.getcwd() .. "/go.mod"
+			if vim.fn.filereadable(go_mod) == 1 and path:match("%.html$") then
 				return "gotmpl"
 			end
 		end,
 	},
 })
 
--- web tab spacing
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" },
 	callback = function()
