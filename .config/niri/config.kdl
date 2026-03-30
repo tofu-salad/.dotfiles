@@ -66,10 +66,10 @@ layout {
 	gaps 4
 	center-focused-column "always"
 	preset-column-widths {
-		proportion 0.75
+		proportion 0.85
 	}
 
-	default-column-width { proportion 0.75; }
+	default-column-width { proportion 0.85; }
 	focus-ring {
 		on
 		width 1

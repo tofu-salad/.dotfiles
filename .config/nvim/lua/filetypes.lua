@@ -4,6 +4,13 @@ vim.filetype.add({
 		templ = "templ",
 		gotmpl = "gotmpl",
 		conf = "swayconfig",
+		-- shaders
+		vs = "glsl",
+		fs = "glsl",
+		vert = "glsl",
+		frag = "glsl",
+		geom = "glsl",
+		comp = "glsl",
 	},
 	pattern = {
 		-- waybar

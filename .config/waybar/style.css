@@ -172,7 +172,7 @@ button {
 }
 
 #custom-apps {
-	background-image: url("/home/tofu/.config/waybar/icons/menu.png");
+	background-image: url("/home/tofu/.config/waybar/icons/NixOS.png");
 }
 
 #custom-tailscale.connected {

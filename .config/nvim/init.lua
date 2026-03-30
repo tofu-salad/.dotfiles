@@ -253,3 +253,5 @@ later(function()
 		end,
 	})
 end)
+
+require "filetypes"

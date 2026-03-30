@@ -12,7 +12,8 @@ fuzzel --dmenu \
   --minimal-lines \
   --width 15 \
   --keyboard-focus=on-demand \
-  --use-bold)
+  --use-bold \
+  --border-radius 0)
 
 case "$choice" in
   "⏻ Shutdown") systemctl poweroff ;;
