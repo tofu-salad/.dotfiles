@@ -53,6 +53,7 @@ vim.keymap.set("n", "<leader>e", "<cmd>Explore<CR>", { desc = "open netrw" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "half page down (centered)" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "half page up (centered)" })
 
+vim.keymap.set("n", "q<Esc>", ":cclose<CR>", { desc = "close quicklist 'q<Esc>'" })
 vim.keymap.set("n", "]q", ":cnext<CR>", { desc = "go to next quicklist item ']q'" })
 vim.keymap.set("n", "[q", ":cprevious<CR>", { desc = "go to previous quicklist item '[q'" })
 vim.keymap.set("n", "[d", function()
@@ -70,7 +71,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "move focus to the upper win
 
 vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", { desc = "[f]ind [f]iles" })
 vim.keymap.set("n", "<leader>ft", ":Pick files tool=\"git\"<CR>", { desc = "[f]ind gi[t] files" })
-vim.keymap.set("n", "<leader>fg", ":Pick grep<CR>", { desc = "[f]iles [g]rep" })
+vim.keymap.set("n", "<leader>fg", ":Pick grep_live<CR>", { desc = "[f]iles [g]rep" })
 
 -- autocmds
 
@@ -138,16 +139,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		-- keybinds
-		map("<leader>lr", vim.lsp.buf.rename, "[l]sp [r]ename")
-		map("<leader>lf", vim.lsp.buf.format, "[l]sp [f]ormat")
-		map("<leader>la", vim.lsp.buf.code_action, "[l]sp code [a]ction")
-
+		map("grf", vim.lsp.buf.format, "[l]sp [f]ormat")
 		map("gd", vim.lsp.buf.definition, "[g]oto [d]efinition")
-		map("<leader>gr", vim.lsp.buf.references, "[g]oto [r]eferences")
-		map("gI", vim.lsp.buf.implementation, "[g]oto [I]mplementation")
-		map("<leader>D", vim.lsp.buf.type_definition, "type [D]efinition")
-		map("<leader>ds", vim.lsp.buf.document_symbol, "[d]ocument [s]ymbols")
-		map("<leader>ws", vim.lsp.buf.workspace_symbol, "[w]orkspace [s]ymbols")
+		map("gws", vim.lsp.buf.workspace_symbol, "[w]orkspace [s]ymbols")
 
 		-- see `:help K` for why this keymap
 		map("K", function()
@@ -156,102 +150,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<C-k>", vim.lsp.buf.signature_help, "signature documentation")
 
 		-- lesser used lsp functionality
-		map("gD", vim.lsp.buf.declaration, "[g]oto [d]eclaration")
-		map("<leader>wa", vim.lsp.buf.add_workspace_folder, "[w]orkspace [a]dd folder")
-		map("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[w]orkspace [r]emove folder")
-		map("<leader>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, "[w]orkspace [l]ist folders")
+		map("gD", vim.lsp.buf.declaration, "[g]oto [D]eclaration")
 	end,
 })
 
-local path_package = vim.fn.stdpath("data") .. "/site/"
-local mini_path = path_package .. "pack/deps/start/mini.nvim"
----@diagnostic disable-next-line: undefined-field
-if not vim.loop.fs_stat(mini_path) then
-	vim.cmd("echo \"Installing `mini.nvim`\" | redraw")
-	local clone_cmd = {
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/nvim-mini/mini.nvim",
-		mini_path,
-	}
-	vim.fn.system(clone_cmd)
-	vim.cmd("packadd mini.nvim | helptags ALL")
-	vim.cmd("echo \"Installed `mini.nvim`\" | redraw")
-end
+vim.pack.add({
+	{ src = "https://github.com/oskarnurm/koda.nvim" },
+	{ src = "https://github.com/nvim-mini/mini.pick", version = "stable" },
+	{ src = "https://github.com/j-hui/fidget.nvim" },
+})
 
-require("mini.deps").setup({ path = { package = path_package } })
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+require("koda").setup({
+	colors = {
+		bg = "#161616",
+	},
+})
 
-now(function()
-	add({
-		source = "oskarnurm/koda.nvim",
-	})
-	require("koda").setup({
-		colors = {
-			bg = "#161616",
-		},
-	})
-	vim.cmd("colorscheme koda")
-end)
+vim.cmd("colorscheme koda")
 
-later(function()
-	add({ source = "nvim-mini/mini.pick", checkout = "stable" })
-	require("mini.pick").setup()
-end)
-
-later(function()
-	add({
-		source = "j-hui/fidget.nvim",
-	})
-	require("fidget").setup({})
-end)
-
-later(function()
-	add({
-		source = "nvim-treesitter/nvim-treesitter",
-		hooks = {
-			post_checkout = function()
-				vim.cmd("TSUpdate")
-			end,
-		},
-	})
-	local ts = require("nvim-treesitter")
-
-	local ignore_parsers = {
-		jsonc = true,
-	}
-
-	vim.api.nvim_create_autocmd("FileType", {
-		pattern = "*",
-		callback = function(ctx)
-			local ft = ctx.match
-			if not ft or ft == "" then
-				return
-			end
-
-			local lang = vim.treesitter.language.get_lang(ft)
-			if not lang or ignore_parsers[lang] then
-				return
-			end
-
-			local available_parsers = ts.get_available()
-			if not vim.tbl_contains(available_parsers, lang) then
-				return
-			end
-
-			local installed = ts.get_installed("parsers")
-			if not vim.tbl_contains(installed, lang) then
-				ts.install({ lang })
-				return
-			end
-
-			pcall(vim.treesitter.start, ctx.buf)
-			vim.bo[ctx.buf].indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
-		end,
-	})
-end)
+require("mini.pick").setup()
+require("fidget").setup({})
 
 require "filetypes"
