@@ -65,11 +65,11 @@ output "HDMI-A-1" {
 layout {
 	gaps 4
 	center-focused-column "always"
-	preset-column-widths {
-		proportion 0.85
-	}
+	// preset-column-widths {
+	// 	proportion 0.95
+	// }
 
-	default-column-width { proportion 0.85; }
+	default-column-width { proportion 0.95; }
 	focus-ring {
 		on
 		width 1
@@ -98,7 +98,7 @@ prefer-no-csd
 // }
 
 window-rule {
-	geometry-corner-radius 4
+	// geometry-corner-radius 4
 	clip-to-geometry true
 }
 
@@ -177,11 +177,6 @@ binds {
 	Mod+Shift+Equal { set-window-height "+10%"; }
 
 	Mod+Shift+Space { toggle-window-floating; }
-
-
-	Print { screenshot; }
-	Ctrl+Print { screenshot-screen; }
-	Alt+Print { screenshot-window; }
 
 	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 	Mod+Shift+E { quit; }

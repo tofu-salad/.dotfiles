@@ -27,7 +27,7 @@
 		"tooltip": false
 	},
 	"niri/language": {
-		"format-en": "",
+		"format-en": "en",
 		"format-es": "es"
 	},
 	"hyprland/language": {
@@ -98,7 +98,7 @@
 	},
 	"custom/apps": {
 		"format": "  ",
-		"on-click": "~/.config/waybar/scripts/app-fuzzel.sh",
+		"on-click": "fuzzel -a top-left --border-radius=0 --keyboard-focus=on-demand",
 		"tooltip-format": "search apps"
 	},
 	"custom/powermenu": {
