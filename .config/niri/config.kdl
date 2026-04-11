@@ -69,9 +69,9 @@ layout {
 	// 	proportion 0.95
 	// }
 
-	default-column-width { proportion 0.95; }
+	default-column-width { proportion 0.9; }
 	focus-ring {
-		on
+		// on
 		width 1
 		active-color "#525252"
 		inactive-color "#393939"
@@ -98,7 +98,7 @@ prefer-no-csd
 // }
 
 window-rule {
-	// geometry-corner-radius 4
+	geometry-corner-radius 4
 	clip-to-geometry true
 }
 
