@@ -63,17 +63,19 @@ output "HDMI-A-1" {
 }
 
 layout {
-	gaps 4
-	center-focused-column "always"
+	gaps 12
+	center-focused-column "never"
+	always-center-single-column
+
 	// preset-column-widths {
 	// 	proportion 0.95
 	// }
 
-	default-column-width { proportion 0.9; }
+	default-column-width { proportion 0.8; }
 	focus-ring {
-		// on
-		width 1
-		active-color "#525252"
+		on
+		width 2
+		active-color "#78A9FF"
 		inactive-color "#393939"
 		urgent-color "#ee5396"
 	}
@@ -97,10 +99,22 @@ prefer-no-csd
 // animations {
 // }
 
+// Window Rules
+
 window-rule {
-	geometry-corner-radius 4
+	geometry-corner-radius 8
 	clip-to-geometry true
 }
+
+window-rule {
+	match app-id="com.saivert.pwvucontrol"
+	default-window-height { fixed 300; }
+	default-column-width  { fixed 560; }
+	open-floating true
+	default-floating-position x=40 y=2 relative-to="top-right"
+}
+
+// Binds
 
 binds {
 	Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
