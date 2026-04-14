@@ -29,6 +29,9 @@ vim.o.completeopt = "menu,noselect,fuzzy,nosort"
 vim.o.timeoutlen = 300
 vim.o.updatetime = 250
 
+-- treat underscore as word separator
+vim.opt.iskeyword:remove("_")
+
 -- netrw
 vim.g.netrw_banner = 0
 vim.g.netrw_localcopydircmd = "cp -r"
