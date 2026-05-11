@@ -27,4 +27,5 @@ keybind = ctrl+s>7=goto_tab:8
 keybind = ctrl+s>8=goto_tab:9
 keybind = ctrl+s>9=goto_tab:10
 keybind = ctrl+s>w=close_tab
+
 gtk-custom-css = tab.css

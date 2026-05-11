@@ -9,7 +9,6 @@
 window#waybar {
 	font-family: inherit;
 	background: shade(alpha(@borders, 0.9), 0.5);
-	border-bottom: 3px solid shade(alpha(@borders, 1.0), 1.75);
 	color: @theme_text_color;
 }
 

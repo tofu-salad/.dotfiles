@@ -9,11 +9,14 @@ input "type:keyboard" {
     xkb_options grp:alt_shift_toggle,caps:escape
 }
 
-primary_selection disabled
-default_border pixel 2
-smart_gaps on
-gaps inner 2
-gaps outer 2
+default_border pixel 1
 hide_edge_borders smart_no_gaps
+primary_selection disabled
 
-output * resolution 1920x1080@74.973Hz position 0 0 bg ~/Wallpapers/minu-phone.png center #161616
+titlebar_border_thickness 1
+titlebar_padding 4 1
+
+client.focused   #3D3D40 #2E2E32 #FFFFFF
+client.unfocused #1D1D20 #1D1D20 #525252
+
+output HDMI-A-1 resolution 1920x1080@74.973Hz position 0 0
