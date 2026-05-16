@@ -163,11 +163,7 @@ vim.pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 })
 
-require("koda").setup({
-	colors = {
-		bg = "#161616",
-	},
-})
+require("koda").setup({})
 
 vim.cmd("colorscheme koda")
 

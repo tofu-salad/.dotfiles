@@ -1,15 +1,13 @@
-@define-color bg00 rgba(22, 22, 22, 1);   /* #161616 */
-@define-color bg01 rgba(38, 38, 38, 1);   /* #262626 */
-@define-color bg03 rgba(82, 82, 82, 1);   /* #525252 */
-@define-color fg0 rgba(255, 255, 255, 1); /* #ffffff */
-@define-color blue-40  #78a9ff;
-@define-color magenta-50  #ee5396;
-@define-color clear rgba(255, 255, 255, 0); /* #ffffff00 (fully transparent) */
+@define-color fg rgba(0, 0, 0, 1);
+@define-color bg rgba(255, 255, 246, 1);
+@define-color accent rgba(120, 169, 255, 1);
+@define-color accent2 rgba(238, 83, 150, 1);
+@define-color clear rgba(255, 255, 255, 0); 
 
 window#waybar {
 	font-family: inherit;
-	background: shade(alpha(@borders, 0.9), 0.5);
-	color: @theme_text_color;
+	background: @bg;
+	color: @fg;
 }
 
 button {
@@ -23,7 +21,7 @@ button:hover{
 
 #workspaces button {
 	padding: 0 0.25rem;
-	color: @bg03;
+	color: @fg;
 }
 
 #workspaces button:hover:not(.focused) {
@@ -31,14 +29,11 @@ button:hover{
 }
 
 #workspaces button.focused, #workspaces button.active {
-	color: @fg0;
-	box-shadow: inset 0 -3px @blue-40;
+	box-shadow: inset 0 -3px @accent;
 }
 
 #mode {
-	color: @bg00;
-	background-color: @magenta-50;
-	padding: 0.25rem;
+	color: @accent2;
 }
 
 #clock,
@@ -67,40 +62,33 @@ button:hover{
 }
 
 #network.ethernet {
-	background-image: url("/home/tofu/.config/waybar/icons/network.png");
+	background-image: url("/home/tofu/.config/waybar/icons/internet.svg");
 }
+
 #network.wifi {
-	background-image: url("/home/tofu/.config/waybar/icons/wifi.png");
+	background-image: url("/home/tofu/.config/waybar/icons/wifi.svg");
 }
 
 #network.disconnected {
-	background-image: url("/home/tofu/.config/waybar/icons/network-off.png");
+	background-image: url("/home/tofu/.config/waybar/icons/internet-off.svg");
 }
 
 #pulseaudio.zero {
-	background-image: url("/home/tofu/.config/waybar/icons/volume-off.png");
+	background-image: url("/home/tofu/.config/waybar/icons/volume-0.svg");
 }
 
 #pulseaudio.medium {
-	background-image: url("/home/tofu/.config/waybar/icons/volume-1.png");
+	background-image: url("/home/tofu/.config/waybar/icons/volume-50.svg");
 }
 
 #pulseaudio.high {
-	background-image: url("/home/tofu/.config/waybar/icons/volume-2.png");
+	background-image: url("/home/tofu/.config/waybar/icons/volume-100.svg");
 }
 
 #custom-power {
-	background-image: url("/home/tofu/.config/waybar/icons/power.png");
+	background-image: url("/home/tofu/.config/waybar/icons/power.svg");
 }
 
 #custom-apps {
-	background-image: url("/home/tofu/.config/waybar/icons/NixOS.png");
-}
-
-#custom-tailscale.connected {
-	background-image: url("/home/tofu/.config/waybar/icons/tailscale.png");
-}
-
-#custom-tailscale.disconnected {
-	background-image: url("/home/tofu/.config/waybar/icons/tailscale-off.png");
+	background-image: url("/home/tofu/.config/waybar/icons/apps.svg");
 }

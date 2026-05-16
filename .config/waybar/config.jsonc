@@ -12,7 +12,6 @@
 	"modules-center": ["clock"],
 	"modules-right": [
 		"tray",
-		"custom/tailscale",
 		"hyprland/language",
 		"sway/language",
 		"niri/language",
@@ -33,7 +32,7 @@
 		"on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
 	},
 	"sway/mode": {
-		"format": "<span style=\"italic\">{}</span>"
+		"format": "{}"
 	},
 	"tray": {
 		"spacing": 10
@@ -45,9 +44,7 @@
 	},
 	"pulseaudio": {
 		"format": "  ",
-		"format-bluetooth": "{volume}% {icon}",
 		"tooltip-format": "{volume}% - {desc}",
-		"format-muted": "<span color='#ee5396'>󰝟</span>",
 		"states": {
 			"zero": 0,
 			"medium": 50,
@@ -92,15 +89,6 @@
 		"format": "  ",
 		"tooltip-format": "Power menu",
 		"on-click": "$HOME/.config/waybar/scripts/powermenu-fuzzel.sh"
-	},
-	"custom/tailscale": {
-		"exec": "$HOME/.config/waybar/scripts/tailscale.sh",
-		"on-click": "~/.config/waybar/scripts/tailscale.sh --toggle",
-		"interval": 30,
-		"return-type": "json",
-		"format": "   ",
-		"hide-empty-text": false,
-		"signal": 9
 	},
 	"custom/power": {
 		"format" : "  ",
