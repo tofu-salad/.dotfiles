@@ -20,6 +20,9 @@
 		"custom/power"
 
 	],
+	"sway/workspaces": {
+		"disable-scroll": true
+	},
 	"sway/language": {
 		"on-click": "swaymsg input type:keyboard xkb_switch_layout next",
 		"tooltip": false
