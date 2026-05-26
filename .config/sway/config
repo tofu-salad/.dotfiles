@@ -1,7 +1,6 @@
+include ./conf.d/startup.conf
 include ./conf.d/binds.conf
 include ./conf.d/rules.conf
-include ./conf.d/startup.conf
-include ./themes/default.conf
 
 output HDMI-A-1 resolution 1920x1080@74.973Hz position 0 0
 
@@ -11,7 +10,7 @@ input "type:keyboard" {
     xkb_options grp:alt_shift_toggle,caps:escape
 }
 
-default_border normal 1
+default_border pixel 1
 titlebar_border_thickness 1
 titlebar_padding 4 1
 client.focused   #000000 #B4EEB4 #000000 #B4EEB4 #868686
