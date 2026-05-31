@@ -34,28 +34,24 @@
 	"hyprland/language": {
 		"on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
 	},
-	"sway/mode": {
-		"format": "{}"
-	},
 	"tray": {
 		"spacing": 10
 	},
 	"network": {
 		"on-click": "$HOME/.config/waybar/scripts/nmtui.sh",
-		"format": "  ",
+		"format-ethernet": "󰌗",
+		"format-wifi": "",
+		"format-disconnected": "󰌙",
 		"tooltip-format": "{ifname} via {gwaddr}"
 	},
 	"pulseaudio": {
-		"format": "  ",
-		"tooltip-format": "{volume}% - {desc}",
-		"states": {
-			"zero": 0,
-			"medium": 50,
-			"high": 100
+		"format": "{icon} {volume}%",
+		"format-muted": "",
+		"format-icons": {
+			"default": ["", " ", "  "]
 		},
-		"scroll-step": 5,
 		"on-click": "pwvucontrol",
-		"ignored-sinks": ["Easy Effects Sink"]
+		"scroll-step": 5
 	},
 	"clock": {
 		"timezone": "America/Buenos_Aires",
@@ -84,17 +80,12 @@
 		}
 	},
 	"custom/apps": {
-		"format": "  ",
+		"format": "",
 		"on-click": "$HOME/.config/waybar/scripts/custom-apps.sh",
 		"tooltip-format": "search apps"
 	},
-	"custom/powermenu": {
-		"format": "  ",
-		"tooltip-format": "Power menu",
-		"on-click": "$HOME/.config/waybar/scripts/powermenu-fuzzel.sh"
-	},
 	"custom/power": {
-		"format" : "  ",
+		"format" : "󰐥",
 		"tooltip": false,
 		"menu": "on-click",
 		"menu-file": "$HOME/.config/waybar/modules/power_menu.xml",

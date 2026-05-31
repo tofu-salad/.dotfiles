@@ -1,7 +1,7 @@
-@define-color fg rgba(0, 0, 0, 1);
-@define-color bg rgba(255, 255, 246, 1);
+
+@define-color fg rgba(255, 255, 255, 1);
+@define-color bg rgba(0, 0, 0, 0.8);
 @define-color accent rgba(120, 169, 255, 1);
-@define-color accent2 rgba(238, 83, 150, 1);
 @define-color clear rgba(255, 255, 255, 0); 
 
 window#waybar {
@@ -30,10 +30,6 @@ button:hover{
 
 #workspaces button.focused, #workspaces button.active {
 	box-shadow: inset 0 -3px @accent;
-}
-
-#mode {
-	color: @accent2;
 }
 
 #clock,
