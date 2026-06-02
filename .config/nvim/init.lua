@@ -1,3 +1,5 @@
+-- disable sql plugin
+vim.g.omni_sql_no_default_maps = 1
 -- options
 vim.o.number = true
 vim.o.relativenumber = true

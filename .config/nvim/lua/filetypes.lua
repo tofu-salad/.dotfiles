@@ -37,8 +37,11 @@ vim.filetype.add({
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte" },
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact", "svelte", "html", "json" },
 	callback = function()
-		vim.o.tabstop = 4
+		vim.o.tabstop = 2
+		vim.o.shiftwidth = 2
+		vim.o.softtabstop = 2
+		vim.o.expandtab = true
 	end,
 })
