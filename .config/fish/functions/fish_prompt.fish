@@ -17,9 +17,9 @@ function fish_prompt
         set pwd (prompt_pwd)
         # Prompt status only if it's not 0
         if test $last_status -ne 0
-            set stat (set_color red)"[$last_status]"(set_color --reset)
+            set stat (set_color red)"[$last_status]"(set_color normal)
         end
     end
 
-    string join '' -- (nix_shell_info) (set_color green) $pwd (set_color --reset) $stat (fish_vcs_prompt) ' $ '
+    string join '' -- (nix_shell_info) (set_color green) $pwd (set_color normal) $stat (fish_vcs_prompt) ' $ '
 end
