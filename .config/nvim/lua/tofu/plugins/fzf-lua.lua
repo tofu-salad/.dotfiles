@@ -4,7 +4,7 @@ pack.add_gh("ibhagwan/fzf-lua")
 
 require("fzf-lua").setup({
 	winopts = {
-		row = 1, -- window row position (0=top, 1=bottom)
+		row = 1,
 		col = 0,
 		height = 0.5,
 		width = 0.5,
@@ -15,4 +15,4 @@ require("fzf-lua").setup({
 
 vim.keymap.set("n", "<leader>ff", "<Cmd>FzfLua files<CR>", { desc = "[f]ind [f]iles" })
 vim.keymap.set("n", "<leader>ft", "<Cmd>FzfLua git_files<CR>", { desc = "[f]ind gi[t] files" })
-vim.keymap.set("n", "<leader>fg", "<Cmd>FzfLua lie_grep<CR>", { desc = "[f]iles [g]rep" })
+vim.keymap.set("n", "<leader>fg", "<Cmd>FzfLua live_grep<CR>", { desc = "[f]iles [g]rep" })

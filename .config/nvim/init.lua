@@ -1,5 +1,5 @@
 require("tofu.opts")
-require("tofu.plugins")
 require("tofu.keymaps")
 require("tofu.autocmds")
+require("tofu.plugins")
 require("tofu.lsp")
