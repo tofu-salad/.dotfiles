@@ -1,17 +1,24 @@
 {
   "plugins": {
     "fidget.nvim": {
-      "rev": "889e2e96edef4e144965571d46f7a77bcc4d0ddf",
+      "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
+    "fzf-lua": {
+      "rev": "988416cc782dfe28bff3f0da9b8c943b236cd86a",
+      "src": "https://github.com/ibhagwan/fzf-lua"
+    },
+    "gitsigns.nvim": {
+      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "koda.nvim": {
-      "rev": "a560a332ccc1eb2caacb280a390213bb9f37b3cb",
+      "rev": "ac7e746882b31a68bdcd533464a20ca40b712bcb",
       "src": "https://github.com/oskarnurm/koda.nvim"
     },
-    "mini.pick": {
-      "rev": "6b7974543b17cf2e294993fc3d8545a342258232",
-      "src": "https://github.com/nvim-mini/mini.pick",
-      "version": "'stable'"
+    "todo-comments.nvim": {
+      "rev": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668",
+      "src": "https://github.com/folke/todo-comments.nvim"
     }
   }
 }
