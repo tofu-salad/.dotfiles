@@ -53,6 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
+
 		if client and client:supports_method("textDocument/documentHighlight", event.buf) then
 			local highlight_augroup = vim.api.nvim_create_augroup("tofu-lsp-highlight", { clear = false })
 			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
