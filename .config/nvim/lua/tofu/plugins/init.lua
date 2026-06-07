@@ -1,5 +1,0 @@
-require("tofu.plugins.fidget")
-require("tofu.plugins.fzf-lua")
-require("tofu.plugins.gitsigns")
-require("tofu.plugins.koda")
-require("tofu.plugins.todo-comments")

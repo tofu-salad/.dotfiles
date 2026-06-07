@@ -29,6 +29,7 @@
             packages = with pkgs; [
               stylua
               lua-language-server
+              tree-sitter
             ];
           };
         }

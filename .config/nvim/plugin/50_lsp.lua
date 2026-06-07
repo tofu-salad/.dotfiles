@@ -1,42 +1,19 @@
-vim.diagnostic.config({
-	update_in_insert = false,
-	severity_sort = true,
-	float = { border = "rounded", source = "if_many" },
-	underline = { severity = { min = vim.diagnostic.severity.WARN } },
+local add = vim.pack.add
+local now_if_args = Config.now_if_args
 
-	virtual_text = false,
-	virtual_lines = false,
-
-	jump = {
-		on_jump = function(_, bufnr)
-			vim.diagnostic.open_float({
-				bufnr = bufnr,
-				scope = "cursor",
-				focus = false,
-			})
-		end,
-	},
-})
-
-local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
-local all_files = vim.fn.readdir(lsp_dir)
-
-local files = {}
-for _, file in ipairs(all_files) do
-	if file:match("%.lua$") then
-		table.insert(files, file)
-	end
-end
-
-local servers = {}
-for _, file in ipairs(files) do
-	local name = file:match("(.+)%.lua$")
-	if name then
-		table.insert(servers, name)
-	end
-end
-
-vim.lsp.enable(servers)
+now_if_args(function()
+	add({ "https://github.com/neovim/nvim-lspconfig" })
+	vim.lsp.enable({
+		"lua_ls",
+		"vtsls",
+		"stylua",
+		"clangd",
+		"gopls",
+		"nixd",
+		"oxfmt",
+		"rust_analyzer",
+	})
+end)
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("tofu-lsp-attach", { clear = true }),
@@ -53,6 +30,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+		if client and client:supports_method("textDocument/semanticTokens/full", event.buf) then
+			client.server_capabilities.semanticTokensProvider = nil
+		end
 
 		if client and client:supports_method("textDocument/documentHighlight", event.buf) then
 			local highlight_augroup = vim.api.nvim_create_augroup("tofu-lsp-highlight", { clear = false })
