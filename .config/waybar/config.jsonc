@@ -1,99 +1,105 @@
 {
-	"layer": "bot",
-	"spacing": 4,
-	"position": "top",
-	"modules-left": [
-		"custom/apps",
-		"hyprland/workspaces",
-		"sway/workspaces",
-		"niri/workspaces",
-		"sway/mode"
-	],
-	"modules-center": ["clock"],
-	"modules-right": [
-		"tray",
-		"hyprland/language",
-		"sway/language",
-		"niri/language",
-		"pulseaudio",
-		"network",
-		"custom/power"
+        "layer": "bot",
+        "spacing": 4,
+        "position": "top",
+        "modules-left": [
+                "custom/apps",
+                "hyprland/workspaces",
+                "sway/workspaces",
+                "niri/workspaces",
+                "ext/workspaces",
+                "sway/mode"
+        ],
+        "modules-center": ["clock"],
+        "modules-right": [
+                "tray",
+                "hyprland/language",
+                "sway/language",
+                "niri/language",
+                "pulseaudio",
+                "network",
+                "custom/power"
 
-	],
-	"sway/workspaces": {
-		"disable-scroll": true
-	},
-	"sway/language": {
-		"on-click": "swaymsg input type:keyboard xkb_switch_layout next",
-		"tooltip": false
-	},
-	"niri/language": {
-		"format-en": "en",
-		"format-es": "es"
-	},
-	"hyprland/language": {
-		"on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
-	},
-	"tray": {
-		"spacing": 10
-	},
-	"network": {
-		"on-click": "$HOME/.config/waybar/scripts/nmtui.sh",
-		"format-ethernet": "󰌗",
-		"format-wifi": "",
-		"format-disconnected": "󰌙",
-		"tooltip-format": "{ifname} via {gwaddr}"
-	},
-	"pulseaudio": {
-		"format": "{icon} {volume}%",
-		"format-muted": "",
-		"format-icons": {
-			"default": ["", " ", "  "]
-		},
-		"on-click": "pwvucontrol",
-		"scroll-step": 5
-	},
-	"clock": {
-		"timezone": "America/Buenos_Aires",
-		"format": "{:%a %d %R %p}",
-		"locale": "en_US.UTF-8",
-		"tooltip-format": "<span><big></big><tt><small>{calendar}</small></tt></span>",
-		"calendar": {
-			"mode": "month",
-			"mode-mon-col": 1,
-			"weeks-pos": "right",
-			"on-scroll": 1,
-			"format": {
-				"months": "<span color='#ffead3'><b>{}</b></span>",
-				"days": "<span color='#ecc6d9'><b>{}</b></span>",
-				"weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
-				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-				"today": "<span color='#ee5396'><b><u>{}</u></b></span>"
-			}
-		},
-		"actions": {
-			"on-click-right": "mode",
-			"on-click-forward": "tz_up",
-			"on-click-backward": "tz_down",
-			"on-scroll-up": "shift_up",
-			"on-scroll-down": "shift_down"
-		}
-	},
-	"custom/apps": {
-		"format": "",
-		"on-click": "$HOME/.config/waybar/scripts/custom-apps.sh",
-		"tooltip-format": "search apps"
-	},
-	"custom/power": {
-		"format" : "󰐥",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
-		"menu-actions": {
-			"shutdown": "shutdown now",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
-	}
+        ],
+        "sway/workspaces": {
+                "disable-scroll": true
+        },
+        "sway/language": {
+                "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+                "tooltip": false
+        },
+        "niri/language": {
+                "format-en": "en",
+                "format-es": "es"
+        },
+        "hyprland/language": {
+                "on-click": "hyprctl switchxkblayout by-tech-gaming-keyboard next"
+        },
+        "tray": {
+                "spacing": 10
+        },
+        "network": {
+                "on-click": "$HOME/.config/waybar/scripts/nmtui.sh",
+                "format-ethernet": "󰌗",
+                "format-wifi": "",
+                "format-disconnected": "󰌙",
+                "tooltip-format": "{ifname} via {gwaddr}"
+        },
+        "pulseaudio": {
+                "format": "{icon} {volume}%",
+                "format-muted": "",
+                "format-icons": {
+                        "default": ["", " ", "  "]
+                },
+                "on-click": "pwvucontrol",
+                "scroll-step": 5
+        },
+        "clock": {
+                "timezone": "America/Buenos_Aires",
+                "format": "{:%a %d %R %p}",
+                "locale": "en_US.UTF-8",
+                "tooltip-format": "<span><big></big><tt><small>{calendar}</small></tt></span>",
+                "calendar": {
+                        "mode": "month",
+                        "mode-mon-col": 1,
+                        "weeks-pos": "right",
+                        "on-scroll": 1,
+                        "format": {
+                                "months": "<span color='#ffead3'><b>{}</b></span>",
+                                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                                "weeks": "<span color='#99ffdd'><b>W{:%V}</b></span>",
+                                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                                "today": "<span color='#ee5396'><b><u>{}</u></b></span>"
+                        }
+                },
+                "actions": {
+                        "on-click-right": "mode",
+                        "on-click-forward": "tz_up",
+                        "on-click-backward": "tz_down",
+                        "on-scroll-up": "shift_up",
+                        "on-scroll-down": "shift_down"
+                }
+        },
+        "custom/apps": {
+                "format": "",
+                "on-click": "$HOME/.config/waybar/scripts/custom-apps.sh",
+                "tooltip-format": "search apps"
+        },
+        "custom/power": {
+                "format" : "󰐥",
+                "tooltip": false,
+                "menu": "on-click",
+                "menu-file": "$HOME/.config/waybar/modules/power_menu.xml",
+                "menu-actions": {
+                        "shutdown": "shutdown now",
+                        "reboot": "reboot",
+                        "suspend": "systemctl suspend",
+                        "hibernate": "systemctl hibernate"
+                }
+        },
+        "ext/workspaces": {
+                "format": "{name}",
+                "sort-by-number": true,
+                "on-click": "activate"
+        }
 }
