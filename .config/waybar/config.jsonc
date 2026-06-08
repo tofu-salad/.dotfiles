@@ -14,6 +14,7 @@
         "modules-right": [
                 "tray",
                 "hyprland/language",
+                "custom/mango-lang",
                 "sway/language",
                 "niri/language",
                 "pulseaudio",
@@ -101,5 +102,11 @@
                 "format": "{name}",
                 "sort-by-number": true,
                 "on-click": "activate"
+        },
+        "custom/mango-lang": {
+                "exec": "$HOME/.config/waybar/modules/mango-lang.sh",
+                "restart-interval": 1,
+                "on-click": "mmsg -d switch_keyboard_layout",
+                "return-type": "json"
         }
 }
