@@ -54,8 +54,13 @@ vim.o.complete = ".,w,b,kspell" -- Use less sources
 vim.o.completeopt = "menuone,noselect,fuzzy,nosort" -- Use custom behavior
 vim.o.completetimeout = 100
 
+-- Misc
+vim.g.omni_sql_no_default_maps = 1 -- Disable SQL ctrl+c
+
 -- Diagnostics
 local diagnostic_opts = {
+	severity_sort = true,
+	float = { border = "single", source = "if_many" },
 	-- Show signs on top of any other sign, but only for warnings and errors
 	signs = { priority = 9999, severity = { min = "WARN", max = "ERROR" } },
 
@@ -64,13 +69,19 @@ local diagnostic_opts = {
 
 	-- Show more details immediately for errors on the current line
 	virtual_lines = false,
-	virtual_text = {
-		current_line = true,
-		severity = { min = "ERROR", max = "ERROR" },
-	},
+	virtual_text = false,
 
 	-- Don't update diagnostics when typing
 	update_in_insert = false,
+	jump = {
+		on_jump = function(_, bufnr)
+			vim.diagnostic.open_float({
+				bufnr = bufnr,
+				scope = "cursor",
+				focus = false,
+			})
+		end,
+	},
 }
 
 Config.later(function()

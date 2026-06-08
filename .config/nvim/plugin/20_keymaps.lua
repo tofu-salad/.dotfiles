@@ -1,6 +1,8 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>]q", "<Cmd>cnext<CR>", { desc = "next item in the quicklist" })
+vim.keymap.set("n", "<leader>[q", "<Cmd>cprev<CR>", { desc = "previous item in the quicklist" })
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 vim.keymap.set("v", "<leader>y", '"+y', { silent = true, desc = "[y]ank to system clipbloard" })

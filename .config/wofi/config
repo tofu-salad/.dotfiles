@@ -1,8 +1,0 @@
-mode=drun
-single_click=true
-insensitive=true
-prompt=Search...
-height=200
-width=500
-term=foot
-hide_scroll=true

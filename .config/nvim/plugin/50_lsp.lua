@@ -12,6 +12,9 @@ now_if_args(function()
 		"nixd",
 		"oxfmt",
 		"rust_analyzer",
+		"html",
+		"cssls",
+		"jsonls",
 	})
 end)
 
@@ -24,6 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		-- Keybinds
+		map("gd", vim.lsp.buf.definition, "[g]o to [d]efinition")
 		map("grf", vim.lsp.buf.format, "[L]sp [F]ormat")
 		map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
@@ -33,29 +37,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		if client and client:supports_method("textDocument/semanticTokens/full", event.buf) then
 			client.server_capabilities.semanticTokensProvider = nil
-		end
-
-		if client and client:supports_method("textDocument/documentHighlight", event.buf) then
-			local highlight_augroup = vim.api.nvim_create_augroup("tofu-lsp-highlight", { clear = false })
-			vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-				buffer = event.buf,
-				group = highlight_augroup,
-				callback = vim.lsp.buf.document_highlight,
-			})
-
-			vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-				buffer = event.buf,
-				group = highlight_augroup,
-				callback = vim.lsp.buf.clear_references,
-			})
-
-			vim.api.nvim_create_autocmd("LspDetach", {
-				group = vim.api.nvim_create_augroup("tofu-lsp-detach", { clear = true }),
-				callback = function(event2)
-					vim.lsp.buf.clear_references()
-					vim.api.nvim_clear_autocmds({ group = "tofu-lsp-highlight", buffer = event2.buf })
-				end,
-			})
 		end
 	end,
 })

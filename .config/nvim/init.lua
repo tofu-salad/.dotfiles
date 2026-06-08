@@ -38,3 +38,16 @@ end
 Config.on_filetype = function(ft, f)
 	misc.safely("filetype:" .. ft, f)
 end
+
+--- @param bin string
+--- @return boolean
+Config.bin_exists = function(bin)
+	return vim.fn.executable(bin) == 1
+end
+
+--- @param bin string
+--- @param root string Project root directory
+--- @return boolean
+Config.bin_exists_nodemodules = function(bin, root)
+	return vim.fn.executable(vim.fs.joinpath(root, "node_modules/.bin", bin)) == 1
+end
