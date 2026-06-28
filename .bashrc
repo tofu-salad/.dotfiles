@@ -3,7 +3,8 @@ case $- in
     *) return ;;
 esac
 
-# use fish if available
-if grep -qv fish /proc/$PPID/comm && [[ $SHLVL == [12] ]]; then
-    SHELL=$(command -v fish) exec fish
+if [[ $SHLVL -le 2 ]] && [[ $(cat /proc/$PPID/comm 2>/dev/null) != "fish" ]]; then
+    if fish_path=$(command -v fish 2>/dev/null); then
+        SHELL=$fish_path exec "$fish_path"
+    fi
 fi
