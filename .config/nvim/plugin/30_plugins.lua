@@ -1,10 +1,10 @@
 local add = vim.pack.add
 local now, now_if_args, later = Config.now, Config.now_if_args, Config.later
 
--- Notify
+-- Fidget
 now(function()
-	add({ "https://github.com/nvim-mini/mini.notify" })
-	require("mini.notify").setup()
+	add({ "https://github.com/j-hui/fidget.nvim" })
+	require("fidget").setup({})
 end)
 
 -- Completion
@@ -51,7 +51,9 @@ end)
 -- Colorscheme
 now(function()
 	add({ "https://github.com/oskarnurm/koda.nvim" })
-	require("koda").setup({})
+	require("koda").setup({
+		transparent = true,
+	})
 	vim.cmd.colorscheme("koda")
 end)
 
