@@ -16,7 +16,7 @@ now_if_args(function()
 		return MiniCompletion.default_process_items(items, base, process_items_opts)
 	end
 	require("mini.completion").setup({
-		delay = { completion = 10 ^ 7, info = 100, signature = 50 },
+		delay = { completion = 10 ^ 7, info = 10 ^ 7, signature = 10 ^ 7 },
 		lsp_completion = {
 			-- Without this config autocompletion is set up through `:h 'completefunc'`.
 			-- Although not needed, setting up through `:h 'omnifunc'` is cleaner
